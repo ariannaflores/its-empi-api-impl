@@ -7,7 +7,6 @@ http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/moc
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
     <munit:config name="munit" doc:name="MUnit configuration"/>
-    <context:property-placeholder location="file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/common_config.properties,file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/config.properties"/>
     <spring:beans>
         <spring:import resource="classpath:empiapi-impl.xml"/>
     	<spring:import resource="classpath:global.xml"/>
@@ -32,9 +31,9 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
- payload.patients map (	
-	 $.enterpriseId		
-	
+ payload.patients map (
+	 $.enterpriseId
+
 )
 
 ]]></dw:set-payload>
@@ -66,8 +65,8 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
-	 payload.lastName		
-	
+	 payload.lastName
+
 
 
 ]]></dw:set-payload>
@@ -101,8 +100,8 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
             <dw:set-payload><![CDATA[%dw 1.0
 %output application/java
 ---
-	 payload.firstName		
-	
+	 payload.firstName
+
 
 
 ]]></dw:set-payload>
