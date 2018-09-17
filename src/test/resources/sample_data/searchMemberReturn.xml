@@ -1,0 +1,1555 @@
+<?xml version='1.0' encoding='UTF-8'?>
+      <searchMemberResponse> 
+         <searchMemberReturn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <item xsi:type="ns1:Member" xmlns:ns1="urn:bean.initiate.com">
+               <audHead xsi:nil="true"/>
+               <compareInfo/>
+               <entIque xsi:nil="true"/>
+               <entLink xsi:nil="true"/>
+               <entNote xsi:nil="true"/>
+               <entOque xsi:nil="true"/>
+               <entRule xsi:nil="true"/>
+               <entXeia xsi:nil="true"/>
+               <entXtsk xsi:nil="true"/>
+               <memAddr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATADDRESS</attrCode>
+                     <attrName/>
+                     <attrRecno>2</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>1</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <city>OAKLAND</city>
+                     <country>USA</country>
+                     <geoCode1/>
+                     <geoCode2/>
+                     <geoText1/>
+                     <stLine1>Moon</stLine1>
+                     <stLine2/>
+                     <stLine3/>
+                     <stLine4/>
+                     <state>CA</state>
+                     <zipCode>94606</zipCode>
+                  </item>
+               </memAddr>
+               <memAppt xsi:nil="true"/>
+               <memAttr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATDEATHIND</attrCode>
+                     <attrName/>
+                     <attrRecno>10</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>2</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <attrVal>N</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATETHNICITY</attrCode>
+                     <attrName/>
+                     <attrRecno>67</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>3</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <attrVal>Unknown</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATGENDER</attrCode>
+                     <attrName/>
+                     <attrRecno>9</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>4</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <attrVal>F</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATREGSTR</attrCode>
+                     <attrName/>
+                     <attrRecno>26</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>5</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <attrVal>PHUNG, ALELI KAY</attrVal>
+                     <elemDesc/>
+                  </item>
+               </memAttr>
+               <memBktd xsi:nil="true"/>
+               <memCmpd xsi:nil="true"/>
+               <memCont xsi:nil="true"/>
+               <memDate>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATBIRTHDT</attrCode>
+                     <attrName/>
+                     <attrRecno>8</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>6</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <dateVal>19990309</dateVal>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLSTACTDT</attrCode>
+                     <attrName/>
+                     <attrRecno>14</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>7</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <dateVal>2015-03-09</dateVal>
+                  </item>
+               </memDate>
+               <memDrug xsi:nil="true"/>
+               <memElig xsi:nil="true"/>
+               <memEnum xsi:nil="true"/>
+               <memExta xsi:nil="true"/>
+               <memExtb xsi:nil="true"/>
+               <memExtc xsi:nil="true"/>
+               <memExtd xsi:nil="true"/>
+               <memExte xsi:nil="true"/>
+               <memHead>
+                  <rowInd>I</rowInd>
+                  <entRecno>1478</entRecno>
+                  <memIdnum>9500477</memIdnum>
+                  <memRecno>1478</memRecno>
+                  <srcCode>BCHO</srcCode>
+                  <caudRecno>1578</caudRecno>
+                  <entRecnos>
+                     <item>1478</item>
+                  </entRecnos>
+                  <linkType/>
+                  <matchCode>DoNothing</matchCode>
+                  <matchScore>78</matchScore>
+                  <maudRecno>1578</maudRecno>
+                  <memSeqno>10</memSeqno>
+                  <memStat>A</memStat>
+                  <memVerno>0</memVerno>
+                  <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                  <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                  <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                  <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                  <srcRecno>26</srcRecno>
+               </memHead>
+               <memIdent>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSSN</attrCode>
+                     <attrName/>
+                     <attrRecno>6</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>8</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>SSA</idIssuer>
+                     <idNumber>562-56-4654</idNumber>
+                     <idSrcRecno>3</idSrcRecno>
+                  </item>
+               </memIdent>
+               <memIds>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATEMCONTACT</attrCode>
+                     <attrName/>
+                     <attrRecno>69</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>24</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>ctfirstname</item>
+                        <item>ctmiddlename</item>
+                        <item>ctlastname</item>
+                        <item>ctrelationship</item>
+                        <item>ctphnumber</item>
+                        <item>ctsequence</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMECONT</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLN</attrCode>
+                     <attrName/>
+                     <attrRecno>101</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>25</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>hlthplncode</item>
+                        <item>hlthplndesc</item>
+                        <item>hlthplntyp</item>
+                        <item>cvgtypcode</item>
+                        <item>cvgtypdesc</item>
+                        <item>benepkgcode</item>
+                        <item>benepkgdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHLTHPLN</segCode>
+                     <values>
+                        <item>HENH</item>
+                        <item>HEALTH NET COMMERCIAL</item>
+                        <item>CI</item>
+                        <item>DW7</item>
+                        <item>HEALTH NET'S BLUE &amp; GOLD HMO</item>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLNGRP</attrCode>
+                     <attrName/>
+                     <attrRecno>102</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>26</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>hlthplngrpplcyid</item>
+                        <item>hlthplngrpcode</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHTHPLNGRP</segCode>
+                     <values>
+                        <item>5047XS</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLNREL</attrCode>
+                     <attrName/>
+                     <attrRecno>103</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>27</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>hlthplngrpname</item>
+                        <item>relationcode</item>
+                        <item>relationdesc</item>
+                        <item>memseqcode</item>
+                        <item>memseqdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHTHPLNREL</segCode>
+                     <values>
+                        <item>UCOP BLUE &amp; GOLD</item>
+                        <item>1</item>
+                        <item>SPOUSE</item>
+                        <item>MS1</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MBRMONTH</attrCode>
+                     <attrName/>
+                     <attrRecno>73</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>30</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>mbrmthactive</item>
+                        <item>mbrmthefctvdt</item>
+                        <item>mbrmthtermdt</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMBRMTH</segCode>
+                     <values>
+                        <item>201805</item>
+                        <item>201608</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MEDICAIDSTAT</attrCode>
+                     <attrName/>
+                     <attrRecno>105</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>31</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>medistatcd</item>
+                        <item>medistatdesc</item>
+                        <item>mediprogcd</item>
+                        <item>mediprogdesc</item>
+                        <item>medidualstatcd</item>
+                        <item>medidualstatdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMEDICAID</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MEDICARESTAT</attrCode>
+                     <attrName/>
+                     <attrRecno>104</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>32</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>medistatcd</item>
+                        <item>medistatdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMEDICARE</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PCPINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>72</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>36</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>pcpprovfirstname</item>
+                        <item>pcpprovlastname</item>
+                        <item>pcpprovfullname</item>
+                        <item>pcpprovnpi</item>
+                        <item>pcpclinicdesc</item>
+                        <item>pcpclinicorgid</item>
+                        <item>pcpclinicorgidtype</item>
+                        <item>pcpclinicorgdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMPCP</segCode>
+                     <values>
+                        <item>MARGARET</item>
+                        <item>DURBIN</item>
+                        <item>MARGARET DURBIN MD</item>
+                        <item>1831203454</item>
+                        <item>JOHN MUIR PHYSICIAN NETWORK</item>
+                        <item>680360801</item>
+                        <item>1</item>
+                        <item>CONTRACTED PROVIDERS</item>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PHARMINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>136</attrRecno>
+                     <caudRecno>107119</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>37</memSeqno>
+                     <recCtime>2018-06-25 10:08:30 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:30 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>rxbin</item>
+                        <item>rxpcn</item>
+                        <item>rxgroup</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMPHARM</segCode>
+                     <values>
+                        <item>123456789ABCDEF</item>
+                        <item>123456789ABCDEF</item>
+                        <item>123456789ABCDEF</item>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>34983</entRecno>
+                     <memIdnum>R12345678MS1</memIdnum>
+                     <memRecno>34983</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>SUBINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>138</attrRecno>
+                     <caudRecno>107484</caudRecno>
+                     <maudRecno>107490</maudRecno>
+                     <memSeqno>46</memSeqno>
+                     <recCtime>2018-06-27 10:30:00 AM</recCtime>
+                     <recMtime>2018-06-27 10:34:08 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-27 10:30:00 AM</srcFtime>
+                     <srcLtime>2018-06-27 10:34:08 AM</srcLtime>
+                     <fldNames>
+                        <item>sublastname</item>
+                        <item>subfirstname</item>
+                        <item>submiddlein</item>
+                        <item>subnumber</item>
+                        <item>subfamilycoverage</item>
+                        <item>subfamilycoveragedesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMSUBSCRIBE</segCode>
+                     <values>
+                        <item>SIMPSON</item>
+                        <item>MARGE</item>
+                        <item>BEATRICE</item>
+                        <item>R12345678FM1</item>
+                        <item>4</item>
+                        <item>Employee + Family</item>
+                     </values>
+                  </item>
+               </memIds>
+               <memIque xsi:nil="true"/>
+               <memLink xsi:nil="true"/>
+               <memName>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATNAME</attrCode>
+                     <attrName/>
+                     <attrRecno>1</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>9</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst>Mars</onmFirst>
+                     <onmLast>Sailor</onmLast>
+                     <onmMiddle/>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+               </memName>
+               <memNote xsi:nil="true"/>
+               <memOque xsi:nil="true"/>
+               <memOref xsi:nil="true"/>
+               <memPhone>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>1478</entRecno>
+                     <memIdnum>9500477</memIdnum>
+                     <memRecno>1478</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATHOMEPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>4</attrRecno>
+                     <caudRecno>1578</caudRecno>
+                     <maudRecno>1578</maudRecno>
+                     <memSeqno>10</memSeqno>
+                     <recCtime>2017-02-24 07:58:08 PM</recCtime>
+                     <recMtime>2017-02-24 07:58:08 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2015-03-09 12:00:00 AM</srcFtime>
+                     <srcLtime>2015-03-09 12:00:00 AM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>(510)555-5555</phNumber>
+                  </item>
+               </memPhone>
+               <memQryd xsi:nil="true"/>
+               <memRule xsi:nil="true"/>
+               <memXeia xsi:nil="true"/>
+               <memXtsk xsi:nil="true"/>
+            </item>
+            <item xsi:type="ns2:Member" xmlns:ns2="urn:bean.initiate.com">
+               <audHead xsi:nil="true"/>
+               <compareInfo/>
+               <entIque xsi:nil="true"/>
+               <entLink xsi:nil="true"/>
+               <entNote xsi:nil="true"/>
+               <entOque xsi:nil="true"/>
+               <entRule xsi:nil="true"/>
+               <entXeia xsi:nil="true"/>
+               <entXtsk xsi:nil="true"/>
+               <memAddr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATADDRESS</attrCode>
+                     <attrName/>
+                     <attrRecno>2</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>1</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <city>ANTIOCH</city>
+                     <country>USA</country>
+                     <geoCode1/>
+                     <geoCode2/>
+                     <geoText1/>
+                     <stLine1>123 MAIN ST</stLine1>
+                     <stLine2/>
+                     <stLine3/>
+                     <stLine4/>
+                     <state>CA</state>
+                     <zipCode>94531</zipCode>
+                  </item>
+               </memAddr>
+               <memAppt xsi:nil="true"/>
+               <memAttr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATGENDER</attrCode>
+                     <attrName/>
+                     <attrRecno>9</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>2</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>F</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATDEATHIND</attrCode>
+                     <attrName/>
+                     <attrRecno>10</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>3</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>N</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATETHNICITY</attrCode>
+                     <attrName/>
+                     <attrRecno>67</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>4</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>U</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLANGUAGE</attrCode>
+                     <attrName/>
+                     <attrRecno>45</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>5</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>UNK</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATRACE</attrCode>
+                     <attrName/>
+                     <attrRecno>57</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>6</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>U</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATREGSTR</attrCode>
+                     <attrName/>
+                     <attrRecno>26</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>7</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>12571</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATRELIGION</attrCode>
+                     <attrName/>
+                     <attrRecno>58</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>8</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>UNK</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATUDFAC</attrCode>
+                     <attrName/>
+                     <attrRecno>68</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>9</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <attrVal>EPIC</attrVal>
+                     <elemDesc/>
+                  </item>
+               </memAttr>
+               <memBktd xsi:nil="true"/>
+               <memCmpd xsi:nil="true"/>
+               <memCont xsi:nil="true"/>
+               <memDate>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATBIRTHDT</attrCode>
+                     <attrName/>
+                     <attrRecno>8</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>10</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <dateVal>2012-01-27</dateVal>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLSTACTDT</attrCode>
+                     <attrName/>
+                     <attrRecno>14</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>11</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <dateVal>2017-02-27</dateVal>
+                  </item>
+               </memDate>
+               <memDrug xsi:nil="true"/>
+               <memElig xsi:nil="true"/>
+               <memEnum xsi:nil="true"/>
+               <memExta xsi:nil="true"/>
+               <memExtb xsi:nil="true"/>
+               <memExtc xsi:nil="true"/>
+               <memExtd xsi:nil="true"/>
+               <memExte xsi:nil="true"/>
+               <memHead>
+                  <rowInd>I</rowInd>
+                  <entRecno>7090</entRecno>
+                  <memIdnum>9501050</memIdnum>
+                  <memRecno>7090</memRecno>
+                  <srcCode>BCHO</srcCode>
+                  <caudRecno>7334</caudRecno>
+                  <entRecnos>
+                     <item>7090</item>
+                  </entRecnos>
+                  <linkType/>
+                  <matchCode>DoNothing</matchCode>
+                  <matchScore>78</matchScore>
+                  <maudRecno>7334</maudRecno>
+                  <memSeqno>16</memSeqno>
+                  <memStat>A</memStat>
+                  <memVerno>0</memVerno>
+                  <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                  <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                  <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                  <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                  <srcRecno>26</srcRecno>
+               </memHead>
+               <memIdent>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSSN</attrCode>
+                     <attrName/>
+                     <attrRecno>6</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>13</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>SSA</idIssuer>
+                     <idNumber>888-88-8888</idNumber>
+                     <idSrcRecno>3</idSrcRecno>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSUBID</attrCode>
+                     <attrName/>
+                     <attrRecno>107</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>14</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>HLTHNT</idIssuer>
+                     <idNumber>123456789F</idNumber>
+                     <idSrcRecno>30</idSrcRecno>
+                  </item>
+               </memIdent>
+               <memIds>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATEMCONTACT</attrCode>
+                     <attrName/>
+                     <attrRecno>69</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>12</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <fldNames>
+                        <item>ctfirstname</item>
+                        <item>ctmiddlename</item>
+                        <item>ctlastname</item>
+                        <item>ctrelationship</item>
+                        <item>ctphnumber</item>
+                        <item>ctsequence</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMECONT</segCode>
+                     <values>
+                        <item>SAILOR</item>
+                        <item/>
+                        <item/>
+                        <item>JEFF</item>
+                        <item>(510)451-0687</item>
+                        <item>1</item>
+                     </values>
+                  </item>
+               </memIds>
+               <memIque xsi:nil="true"/>
+               <memLink xsi:nil="true"/>
+               <memName>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATNAME</attrCode>
+                     <attrName/>
+                     <attrRecno>1</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>15</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst>MARS</onmFirst>
+                     <onmLast>SAILOR</onmLast>
+                     <onmMiddle/>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+               </memName>
+               <memNote xsi:nil="true"/>
+               <memOque xsi:nil="true"/>
+               <memOref xsi:nil="true"/>
+               <memPhone>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7090</entRecno>
+                     <memIdnum>9501050</memIdnum>
+                     <memRecno>7090</memRecno>
+                     <srcCode>BCHO</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATHOMEPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>4</attrRecno>
+                     <caudRecno>7334</caudRecno>
+                     <maudRecno>7334</maudRecno>
+                     <memSeqno>16</memSeqno>
+                     <recCtime>2017-02-27 08:19:40 AM</recCtime>
+                     <recMtime>2017-02-27 08:19:40 AM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+                     <srcLtime>2017-02-27 08:19:34 AM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>(510)451-0687</phNumber>
+                  </item>
+               </memPhone>
+               <memQryd xsi:nil="true"/>
+               <memRule xsi:nil="true"/>
+               <memXeia xsi:nil="true"/>
+               <memXtsk xsi:nil="true"/>
+            </item>
+            <item xsi:type="ns3:Member" xmlns:ns3="urn:bean.initiate.com">
+               <audHead xsi:nil="true"/>
+               <compareInfo/>
+               <entIque xsi:nil="true"/>
+               <entLink xsi:nil="true"/>
+               <entNote xsi:nil="true"/>
+               <entOque xsi:nil="true"/>
+               <entRule xsi:nil="true"/>
+               <entXeia xsi:nil="true"/>
+               <entXtsk xsi:nil="true"/>
+               <memAddr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATADDRESS</attrCode>
+                     <attrName/>
+                     <attrRecno>2</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>10</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <city>ANTIOCH</city>
+                     <country>USA</country>
+                     <geoCode1/>
+                     <geoCode2/>
+                     <geoText1/>
+                     <stLine1>123 MAIN ST</stLine1>
+                     <stLine2/>
+                     <stLine3/>
+                     <stLine4/>
+                     <state>CA</state>
+                     <zipCode>94531</zipCode>
+                  </item>
+               </memAddr>
+               <memAppt xsi:nil="true"/>
+               <memAttr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATGENDER</attrCode>
+                     <attrName/>
+                     <attrRecno>9</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>2</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>F</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATDEATHIND</attrCode>
+                     <attrName/>
+                     <attrRecno>10</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>3</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>N</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATREGSTR</attrCode>
+                     <attrName/>
+                     <attrRecno>26</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>4</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>22614</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATUDFAC</attrCode>
+                     <attrName/>
+                     <attrRecno>68</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>5</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>APeX</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATETHNICITY</attrCode>
+                     <attrName/>
+                     <attrRecno>67</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>11</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>U</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLANGUAGE</attrCode>
+                     <attrName/>
+                     <attrRecno>45</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>12</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>ENG</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATRACE</attrCode>
+                     <attrName/>
+                     <attrRecno>57</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>13</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <attrVal>U</attrVal>
+                     <elemDesc/>
+                  </item>
+               </memAttr>
+               <memBktd xsi:nil="true"/>
+               <memCmpd xsi:nil="true"/>
+               <memCont xsi:nil="true"/>
+               <memDate>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATBIRTHDT</attrCode>
+                     <attrName/>
+                     <attrRecno>8</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>6</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <dateVal>20110127</dateVal>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLSTACTDT</attrCode>
+                     <attrName/>
+                     <attrRecno>14</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>7</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <dateVal>2017-02-27</dateVal>
+                  </item>
+               </memDate>
+               <memDrug xsi:nil="true"/>
+               <memElig xsi:nil="true"/>
+               <memEnum xsi:nil="true"/>
+               <memExta xsi:nil="true"/>
+               <memExtb xsi:nil="true"/>
+               <memExtc xsi:nil="true"/>
+               <memExtd xsi:nil="true"/>
+               <memExte xsi:nil="true"/>
+               <memHead>
+                  <rowInd>I</rowInd>
+                  <entRecno>7100</entRecno>
+                  <memIdnum>97581185</memIdnum>
+                  <memRecno>7100</memRecno>
+                  <srcCode>UCSF</srcCode>
+                  <caudRecno>7400</caudRecno>
+                  <entRecnos>
+                     <item>7100</item>
+                  </entRecnos>
+                  <linkType/>
+                  <matchCode>DoNothing</matchCode>
+                  <matchScore>78</matchScore>
+                  <maudRecno>7423</maudRecno>
+                  <memSeqno>15</memSeqno>
+                  <memStat>A</memStat>
+                  <memVerno>1</memVerno>
+                  <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                  <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                  <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                  <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                  <srcRecno>18</srcRecno>
+               </memHead>
+               <memIdent>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSSN</attrCode>
+                     <attrName/>
+                     <attrRecno>6</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>8</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>SSA</idIssuer>
+                     <idNumber>888-88-8888</idNumber>
+                     <idSrcRecno>3</idSrcRecno>
+                  </item>
+               </memIdent>
+               <memIds>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATEMCONTACT</attrCode>
+                     <attrName/>
+                     <attrRecno>69</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>14</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <fldNames>
+                        <item>ctfirstname</item>
+                        <item>ctmiddlename</item>
+                        <item>ctlastname</item>
+                        <item>ctrelationship</item>
+                        <item>ctphnumber</item>
+                        <item>ctsequence</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMECONT</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item>1</item>
+                     </values>
+                  </item>
+               </memIds>
+               <memIque xsi:nil="true"/>
+               <memLink xsi:nil="true"/>
+               <memName>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATNAME</attrCode>
+                     <attrName/>
+                     <attrRecno>1</attrRecno>
+                     <caudRecno>7400</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>9</memSeqno>
+                     <recCtime>2017-02-27 01:25:47 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst>MARS</onmFirst>
+                     <onmLast>SAILOR</onmLast>
+                     <onmMiddle/>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+               </memName>
+               <memNote xsi:nil="true"/>
+               <memOque xsi:nil="true"/>
+               <memOref xsi:nil="true"/>
+               <memPhone>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>7100</entRecno>
+                     <memIdnum>97581185</memIdnum>
+                     <memRecno>7100</memRecno>
+                     <srcCode>UCSF</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATHOMEPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>4</attrRecno>
+                     <caudRecno>7423</caudRecno>
+                     <maudRecno>7423</maudRecno>
+                     <memSeqno>15</memSeqno>
+                     <recCtime>2017-02-27 03:01:57 PM</recCtime>
+                     <recMtime>2017-02-27 03:01:57 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2017-02-27 03:01:53 PM</srcFtime>
+                     <srcLtime>2017-02-27 03:01:53 PM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>(510)451-0687</phNumber>
+                  </item>
+               </memPhone>
+               <memQryd xsi:nil="true"/>
+               <memRule xsi:nil="true"/>
+               <memXeia xsi:nil="true"/>
+               <memXtsk xsi:nil="true"/>
+            </item>
+     </searchMemberReturn>
+     </searchMemberResponse>

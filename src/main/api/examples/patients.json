@@ -1,0 +1,88 @@
+{
+  "patients": [
+    {
+      "enterpriseId": "7671",
+      "memIdnum": "TEST1",
+      "srcCode": "CANOPY",
+      "matchScore": "119",
+      "firstName": "TONY",
+      "lastName": "SOPRANO",
+      "middleName": "J",
+      "prefix": "",
+      "suffix": "",
+      "dateOfBirth": "1995-11-04",
+      "gender":"M",
+      "ssn": "234-34-2342",
+      "subscriberIds": [
+        { 
+          "plan": "HLTHNT",
+          "subscriberId": "R03268200"
+        }
+      ] 
+    },
+    {
+      "enterpriseId": "7673",
+      "memIdnum": "TEST2",
+      "srcCode": "CANOPY",
+      "matchScore": "119",
+      "firstName": "TONY",
+      "lastName": "SOPRANO",
+      "middleName": "J",
+      "prefix": "",
+      "suffix": "",
+      "dateOfBirth": "1995-11-04",
+      "gender":"M",
+      "subscriberIds": [
+        { 
+          "plan": "HLTHNT",
+          "subscriberId": "R03268203"
+        }
+      ]       
+    },
+    {
+      "enterpriseId": "7714",
+      "memIdnum": "TEST5",
+      "srcCode": "CANOPY",
+      "matchScore": "119",
+      "firstName": "TONY",
+      "lastName": "SOPRANO",
+      "middleName": "J",
+      "prefix": "",
+      "suffix": "",
+      "dateOfBirth": "1995-11-04",
+      "gender":"M",
+      "ssn": "234-34-2342",
+      "subscriberIds": [
+        { 
+          "plan": "HLTHNT",
+          "subscriberId": "R03268204"
+        }
+      ]       
+    },
+    {
+      "enterpriseId": "7715",
+      "memIdnum": "TEST6",
+      "srcCode": "CANOPY",
+      "matchScore": "119",
+      "firstName": "TONY",
+      "lastName": "SOPRANO",
+      "middleName": "J",
+      "prefix": "",
+      "suffix": "",
+      "dateOfBirth": "1995-11-04",
+      "gender":"M"
+    },
+    {
+      "enterpriseId": "7723",
+      "memIdnum": "TEST7",
+      "srcCode": "CANOPY",
+      "matchScore": "119",
+      "firstName": "TONY",
+      "lastName": "SOPRANO",
+      "middleName": "J",
+      "prefix": "",
+      "suffix": "",
+      "dateOfBirth": "1995-11-04"
+    }
+  ]
+}

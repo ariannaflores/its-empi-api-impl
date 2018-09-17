@@ -1,0 +1,40 @@
+{
+    "patients": [
+        {
+            "enterpriseId": "7158",
+            "memIdnum": "97581185",
+            "srcCode": "UCSF",
+            "matchScore": "126",
+            "firstName": "MARS",
+            "lastName": "SAILOR",
+            "dateOfBirth": "2012-01-27",
+            "gender": "F",
+            "ssn": "888-88-8888",
+            "subscriberIds": []
+        },
+        {
+            "enterpriseId": "7158",
+            "memIdnum": "9501050",
+            "srcCode": "BCHO",
+            "matchScore": "126",
+            "firstName": "",
+            "lastName": "JUPITER",
+            "dateOfBirth": "2012-01-27",
+            "gender": "F",
+            "ssn": "888-88-8888",
+            "subscriberIds": []
+        },
+        {
+            "enterpriseId": "1574",
+            "memIdnum": "9500477",
+            "srcCode": "BCHO",
+            "matchScore": "58",
+            "firstName": "Mars",
+            "lastName": "Sailor",
+            "dateOfBirth": "1999-03-09",
+            "gender": "F",
+            "ssn": "562-56-4654",
+            "subscriberIds": []
+        }
+    ]
+}

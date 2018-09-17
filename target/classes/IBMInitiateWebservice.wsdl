@@ -1,0 +1,4056 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:bean.initiate.com" xmlns:intf="urn:bean.initiate.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:bean.initiate.com">
+<!--
+WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)
+-->
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:bean.initiate.com">
+<import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+<complexType abstract="true" name="IxnBaseRequest">
+<sequence>
+<element name="args" nillable="true" type="xsd:string"/>
+<element name="audMode" nillable="true" type="xsd:string"/>
+<element name="userName" nillable="true" type="xsd:string"/>
+<element name="userPassword" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType abstract="true" name="MemberIxnRequestBase">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="getType" nillable="true" type="xsd:string"/>
+<element name="keySortOrder" nillable="true" type="xsd:string"/>
+<element name="memStatFilter" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType abstract="true" name="BeanWs">
+<sequence/>
+</complexType>
+<complexType abstract="true" name="SegDefBeanWs">
+<complexContent>
+<extension base="impl:BeanWs">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RowWs">
+<complexContent>
+<extension base="impl:SegDefBeanWs">
+<sequence>
+<element name="rowInd" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="AudRowWs">
+<complexContent>
+<extension base="impl:RowWs">
+<sequence>
+<element name="audRecno" type="xsd:long"/>
+<element name="audSeqno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="AudHeadWs">
+<complexContent>
+<extension base="impl:AudRowWs">
+<sequence>
+<element name="audCtime" nillable="true" type="xsd:string"/>
+<element name="evtCtime" nillable="true" type="xsd:string"/>
+<element name="evtInitiator" nillable="true" type="xsd:string"/>
+<element name="evtLocation" nillable="true" type="xsd:string"/>
+<element name="evtType" nillable="true" type="xsd:string"/>
+<element name="evtTypeno" type="xsd:int"/>
+<element name="ixnCode" nillable="true" type="xsd:string"/>
+<element name="ixnRecno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfAudHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:AudHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="MemRowWs">
+<complexContent>
+<extension base="impl:RowWs">
+<sequence>
+<element name="entRecno" type="xsd:long"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" type="xsd:long"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EntIqueWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="audRecno" type="xsd:long"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="wrkCode" nillable="true" type="xsd:string"/>
+<element name="wrkOwner" nillable="true" type="xsd:string"/>
+<element name="wrkPrior" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntIqueWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntIqueWs"/>
+</sequence>
+</complexType>
+<complexType name="EntLinkWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="curEntRecno" type="xsd:long"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="linkType" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntLinkWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntLinkWs"/>
+</sequence>
+</complexType>
+<complexType name="EntNoteWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="cusrLogin" nillable="true" type="xsd:string"/>
+<element name="cusrRecno" type="xsd:int"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="musrLogin" nillable="true" type="xsd:string"/>
+<element name="musrRecno" type="xsd:int"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="theNote" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntNoteWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntNoteWs"/>
+</sequence>
+</complexType>
+<complexType name="EntOqueWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="audRecno" type="xsd:long"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="wrkCode" nillable="true" type="xsd:string"/>
+<element name="wrkOwner" nillable="true" type="xsd:string"/>
+<element name="wrkPrior" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntOqueWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntOqueWs"/>
+</sequence>
+</complexType>
+<complexType name="EntRuleWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="memRecno2" type="xsd:long"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="ruleType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntRuleWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntRuleWs"/>
+</sequence>
+</complexType>
+<complexType name="EntXeiaWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="eiaStat" nillable="true" type="xsd:string"/>
+<element name="eiaStat2" nillable="true" type="xsd:string"/>
+<element name="eiaStatno" type="xsd:int"/>
+<element name="eiaStatno2" type="xsd:int"/>
+<element name="eiaType" nillable="true" type="xsd:string"/>
+<element name="eiaTypeno" type="xsd:int"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="maxScore" type="xsd:short"/>
+<element name="minScore" type="xsd:short"/>
+<element name="prevEntRecno" type="xsd:long"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recCtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recCtimeSince" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="recMtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recMtimeSince" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="supEntRecno" type="xsd:long"/>
+<element name="tskStat" nillable="true" type="xsd:string"/>
+<element name="tskStatno" type="xsd:int"/>
+<element name="tskType" nillable="true" type="xsd:string"/>
+<element name="tskTypeno" type="xsd:int"/>
+<element name="usrLogin" nillable="true" type="xsd:string"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="xtskCarn" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntXeiaWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntXeiaWs"/>
+</sequence>
+</complexType>
+<complexType name="EntXtskWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="maxScore" type="xsd:short"/>
+<element name="minScore" type="xsd:short"/>
+<element name="ownerName" nillable="true" type="xsd:string"/>
+<element name="ownerRecno" type="xsd:int"/>
+<element name="ownerType" nillable="true" type="xsd:string"/>
+<element name="prevOwnerName" nillable="true" type="xsd:string"/>
+<element name="prevOwnerRecno" type="xsd:int"/>
+<element name="prevOwnerType" nillable="true" type="xsd:string"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recCtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recCtimeSince" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="recMtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recMtimeSince" nillable="true" type="xsd:string"/>
+<element name="relatedMembers" type="xsd:int"/>
+<element name="setRecno" type="xsd:long"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="supEntRecno" type="xsd:long"/>
+<element name="tskRecno" type="xsd:long"/>
+<element name="tskStat" nillable="true" type="xsd:string"/>
+<element name="tskStatno" type="xsd:int"/>
+<element name="tskType" nillable="true" type="xsd:string"/>
+<element name="tskTypeno" type="xsd:int"/>
+<element name="usrLogin" nillable="true" type="xsd:string"/>
+<element name="usrRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntXtskWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntXtskWs"/>
+</sequence>
+</complexType>
+<complexType name="MemAttrRowWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="asaIdxno" type="xsd:int"/>
+<element name="attrCode" nillable="true" type="xsd:string"/>
+<element name="attrName" nillable="true" type="xsd:string"/>
+<element name="attrRecno" type="xsd:int"/>
+<element name="caudRecno" type="xsd:long"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="memSeqno" type="xsd:int"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="recStat" nillable="true" type="xsd:string"/>
+<element name="srcFtime" nillable="true" type="xsd:string"/>
+<element name="srcLtime" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemAddrWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="city" nillable="true" type="xsd:string"/>
+<element name="country" nillable="true" type="xsd:string"/>
+<element name="geoCode1" nillable="true" type="xsd:string"/>
+<element name="geoCode2" nillable="true" type="xsd:string"/>
+<element name="geoText1" nillable="true" type="xsd:string"/>
+<element name="stLine1" nillable="true" type="xsd:string"/>
+<element name="stLine2" nillable="true" type="xsd:string"/>
+<element name="stLine3" nillable="true" type="xsd:string"/>
+<element name="stLine4" nillable="true" type="xsd:string"/>
+<element name="state" nillable="true" type="xsd:string"/>
+<element name="zipCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemAddrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemAddrWs"/>
+</sequence>
+</complexType>
+<complexType name="MemApptWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="apIssuer" nillable="true" type="xsd:string"/>
+<element name="apNumber" nillable="true" type="xsd:string"/>
+<element name="apSrcRecno" type="xsd:int"/>
+<element name="apStime" nillable="true" type="xsd:string"/>
+<element name="resDept" nillable="true" type="xsd:string"/>
+<element name="resId" nillable="true" type="xsd:string"/>
+<element name="resLoc" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemApptWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemApptWs"/>
+</sequence>
+</complexType>
+<complexType name="MemAttrWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="attrVal" nillable="true" type="xsd:string"/>
+<element name="elemDesc" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemAttrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemAttrWs"/>
+</sequence>
+</complexType>
+<complexType name="MemBktdWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="bktHash" type="xsd:long"/>
+<element name="bktRole" type="xsd:long"/>
+<element name="bktVal" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemBktdWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemBktdWs"/>
+</sequence>
+</complexType>
+<complexType name="MemCmpdWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="cmpSeqno" type="xsd:int"/>
+<element name="cmpVal" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemCmpdWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemCmpdWs"/>
+</sequence>
+</complexType>
+<complexType name="MemContWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="ctrCenter" nillable="true" type="xsd:string"/>
+<element name="ctrCisId" nillable="true" type="xsd:string"/>
+<element name="ctrDeal" nillable="true" type="xsd:string"/>
+<element name="ctrEffDate" nillable="true" type="xsd:string"/>
+<element name="ctrEndDate" nillable="true" type="xsd:string"/>
+<element name="ctrId" nillable="true" type="xsd:string"/>
+<element name="ctrLob" nillable="true" type="xsd:string"/>
+<element name="ctrMarket" nillable="true" type="xsd:string"/>
+<element name="ctrMasId" nillable="true" type="xsd:string"/>
+<element name="ctrMasName" nillable="true" type="xsd:string"/>
+<element name="ctrName" nillable="true" type="xsd:string"/>
+<element name="ctrNetwork" nillable="true" type="xsd:string"/>
+<element name="ctrParCd" nillable="true" type="xsd:string"/>
+<element name="ctrSeqNum" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemContWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemContWs"/>
+</sequence>
+</complexType>
+<complexType name="MemDateWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="dateVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemDateWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemDateWs"/>
+</sequence>
+</complexType>
+<complexType name="MemDrugWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="dateFilled" nillable="true" type="xsd:string"/>
+<element name="daysSupply" type="xsd:short"/>
+<element name="dob" nillable="true" type="xsd:string"/>
+<element name="drugCode" nillable="true" type="xsd:string"/>
+<element name="onmFirst" nillable="true" type="xsd:string"/>
+<element name="onmLast" nillable="true" type="xsd:string"/>
+<element name="onmMiddle" nillable="true" type="xsd:string"/>
+<element name="perCode" nillable="true" type="xsd:string"/>
+<element name="pharmacyId" nillable="true" type="xsd:string"/>
+<element name="prescriberId" nillable="true" type="xsd:string"/>
+<element name="quantity" type="xsd:int"/>
+<element name="refillNumber" type="xsd:short"/>
+<element name="rxNumber" nillable="true" type="xsd:string"/>
+<element name="sex" nillable="true" type="xsd:string"/>
+<element name="ssn" nillable="true" type="xsd:string"/>
+<element name="totalRefills" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemDrugWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemDrugWs"/>
+</sequence>
+</complexType>
+<complexType name="MemEligWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="city" nillable="true" type="xsd:string"/>
+<element name="country" nillable="true" type="xsd:string"/>
+<element name="dob" nillable="true" type="xsd:string"/>
+<element name="eligDate" nillable="true" type="xsd:string"/>
+<element name="geoCode1" nillable="true" type="xsd:string"/>
+<element name="geoCode2" nillable="true" type="xsd:string"/>
+<element name="geoText1" nillable="true" type="xsd:string"/>
+<element name="insGroup" nillable="true" type="xsd:string"/>
+<element name="insPlan" nillable="true" type="xsd:string"/>
+<element name="onmDegree" nillable="true" type="xsd:string"/>
+<element name="onmFirst" nillable="true" type="xsd:string"/>
+<element name="onmLast" nillable="true" type="xsd:string"/>
+<element name="onmMiddle" nillable="true" type="xsd:string"/>
+<element name="onmPrefix" nillable="true" type="xsd:string"/>
+<element name="onmSuffix" nillable="true" type="xsd:string"/>
+<element name="perCode" nillable="true" type="xsd:string"/>
+<element name="phArea" nillable="true" type="xsd:string"/>
+<element name="phCmnt" nillable="true" type="xsd:string"/>
+<element name="phExtn" nillable="true" type="xsd:string"/>
+<element name="phIcc" nillable="true" type="xsd:string"/>
+<element name="phNumber" nillable="true" type="xsd:string"/>
+<element name="sex" nillable="true" type="xsd:string"/>
+<element name="ssn" nillable="true" type="xsd:string"/>
+<element name="stLine1" nillable="true" type="xsd:string"/>
+<element name="stLine2" nillable="true" type="xsd:string"/>
+<element name="state" nillable="true" type="xsd:string"/>
+<element name="termDate" nillable="true" type="xsd:string"/>
+<element name="zipCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemEligWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemEligWs"/>
+</sequence>
+</complexType>
+<complexType name="MemEnumWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="elemRecno" type="xsd:int"/>
+<element name="elemVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemEnumWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemEnumWs"/>
+</sequence>
+</complexType>
+<complexType name="MemExtaWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="city" nillable="true" type="xsd:string"/>
+<element name="comData1" nillable="true" type="xsd:string"/>
+<element name="comData2" nillable="true" type="xsd:string"/>
+<element name="comData3" nillable="true" type="xsd:string"/>
+<element name="comType1" nillable="true" type="xsd:string"/>
+<element name="comType2" nillable="true" type="xsd:string"/>
+<element name="comType3" nillable="true" type="xsd:string"/>
+<element name="country" nillable="true" type="xsd:string"/>
+<element name="dob" nillable="true" type="xsd:string"/>
+<element name="empName" nillable="true" type="xsd:string"/>
+<element name="hpMemIdnum" nillable="true" type="xsd:string"/>
+<element name="hpPolIdnum" nillable="true" type="xsd:string"/>
+<element name="hpSubIdnum" nillable="true" type="xsd:string"/>
+<element name="memExpDate" nillable="true" type="xsd:string"/>
+<element name="onmFirst" nillable="true" type="xsd:string"/>
+<element name="onmLast" nillable="true" type="xsd:string"/>
+<element name="onmMiddle" nillable="true" type="xsd:string"/>
+<element name="onmPrefix" nillable="true" type="xsd:string"/>
+<element name="onmSuffix" nillable="true" type="xsd:string"/>
+<element name="sex" nillable="true" type="xsd:string"/>
+<element name="ssn" nillable="true" type="xsd:string"/>
+<element name="stLine1" nillable="true" type="xsd:string"/>
+<element name="stLine2" nillable="true" type="xsd:string"/>
+<element name="state" nillable="true" type="xsd:string"/>
+<element name="subIdnum" nillable="true" type="xsd:string"/>
+<element name="zipCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemExtaWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemExtaWs"/>
+</sequence>
+</complexType>
+<complexType name="MemExtbWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="ccExpDate" nillable="true" type="xsd:string"/>
+<element name="ccNumber" nillable="true" type="xsd:string"/>
+<element name="ccType" nillable="true" type="xsd:string"/>
+<element name="doa" nillable="true" type="xsd:string"/>
+<element name="propCode" nillable="true" type="xsd:string"/>
+<element name="txnID" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemExtbWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemExtbWs"/>
+</sequence>
+</complexType>
+<complexType name="MemExtcWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="acctNumber" nillable="true" type="xsd:string"/>
+<element name="disDate" nillable="true" type="xsd:string"/>
+<element name="encDate" nillable="true" type="xsd:string"/>
+<element name="patType" nillable="true" type="xsd:string"/>
+<element name="phys1" nillable="true" type="xsd:string"/>
+<element name="phys2" nillable="true" type="xsd:string"/>
+<element name="plan1" nillable="true" type="xsd:string"/>
+<element name="plan2" nillable="true" type="xsd:string"/>
+<element name="svcLoc" nillable="true" type="xsd:string"/>
+<element name="svcType" nillable="true" type="xsd:string"/>
+<element name="user1" nillable="true" type="xsd:string"/>
+<element name="user2" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemExtcWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemExtcWs"/>
+</sequence>
+</complexType>
+<complexType name="MemExtdWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="city" nillable="true" type="xsd:string"/>
+<element name="dob" nillable="true" type="xsd:string"/>
+<element name="expDate" nillable="true" type="xsd:string"/>
+<element name="expInd" nillable="true" type="xsd:string"/>
+<element name="modDate" nillable="true" type="xsd:string"/>
+<element name="onmFirst" nillable="true" type="xsd:string"/>
+<element name="onmLast" nillable="true" type="xsd:string"/>
+<element name="onmMiddle" nillable="true" type="xsd:string"/>
+<element name="onmSuffix" nillable="true" type="xsd:string"/>
+<element name="phone" nillable="true" type="xsd:string"/>
+<element name="secIdnum" nillable="true" type="xsd:string"/>
+<element name="sex" nillable="true" type="xsd:string"/>
+<element name="ssn" nillable="true" type="xsd:string"/>
+<element name="stLine1" nillable="true" type="xsd:string"/>
+<element name="stLine2" nillable="true" type="xsd:string"/>
+<element name="state" nillable="true" type="xsd:string"/>
+<element name="zipCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemExtdWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemExtdWs"/>
+</sequence>
+</complexType>
+<complexType name="MemExteWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="accNum" nillable="true" type="xsd:string"/>
+<element name="frmCnt" type="xsd:int"/>
+<element name="pacsId" nillable="true" type="xsd:string"/>
+<element name="refPhys" nillable="true" type="xsd:string"/>
+<element name="stuDate" nillable="true" type="xsd:string"/>
+<element name="stuDesc" nillable="true" type="xsd:string"/>
+<element name="stuMod" nillable="true" type="xsd:string"/>
+<element name="studyId" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemExteWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemExteWs"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_xsd_long">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="MemHeadWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="entRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="linkType" nillable="true" type="xsd:string"/>
+<element name="matchCode" nillable="true" type="xsd:string"/>
+<element name="matchScore" type="xsd:short"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="memSeqno" type="xsd:int"/>
+<element name="memStat" nillable="true" type="xsd:string"/>
+<element name="memVerno" type="xsd:int"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="srcFtime" nillable="true" type="xsd:string"/>
+<element name="srcLtime" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemIdentWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="idExpDate" nillable="true" type="xsd:string"/>
+<element name="idIssuer" nillable="true" type="xsd:string"/>
+<element name="idNumber" nillable="true" type="xsd:string"/>
+<element name="idSrcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemIdentWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemIdentWs"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOf_xsd_string">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="MemIdsWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="fldNames" nillable="true" type="impl:ArrayOf_xsd_string"/>
+<element name="fldTypes" nillable="true" type="impl:ArrayOf_xsd_string"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+<element name="values" nillable="true" type="impl:ArrayOf_xsd_string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemIdsWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemIdsWs"/>
+</sequence>
+</complexType>
+<complexType name="MemIqueWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="audRecno" type="xsd:long"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="wrkCode" nillable="true" type="xsd:string"/>
+<element name="wrkOwner" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemIqueWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemIqueWs"/>
+</sequence>
+</complexType>
+<complexType name="MemLinkWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="curSetRecno" type="xsd:long"/>
+<element name="linkType" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemLinkWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemLinkWs"/>
+</sequence>
+</complexType>
+<complexType name="MemNameWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="onmDegree" nillable="true" type="xsd:string"/>
+<element name="onmFirst" nillable="true" type="xsd:string"/>
+<element name="onmLast" nillable="true" type="xsd:string"/>
+<element name="onmMiddle" nillable="true" type="xsd:string"/>
+<element name="onmPrefix" nillable="true" type="xsd:string"/>
+<element name="onmSuffix" nillable="true" type="xsd:string"/>
+<element name="onmTitle" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemNameWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemNameWs"/>
+</sequence>
+</complexType>
+<complexType name="MemNoteWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="cusrLogin" nillable="true" type="xsd:string"/>
+<element name="cusrRecno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="musrLogin" nillable="true" type="xsd:string"/>
+<element name="musrRecno" type="xsd:int"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="theNote" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemNoteWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemNoteWs"/>
+</sequence>
+</complexType>
+<complexType name="MemOqueWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="audRecno" type="xsd:long"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="wrkCode" nillable="true" type="xsd:string"/>
+<element name="wrkOwner" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemOqueWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemOqueWs"/>
+</sequence>
+</complexType>
+<complexType name="MemOrefWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="objRecno" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemOrefWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemOrefWs"/>
+</sequence>
+</complexType>
+<complexType name="MemPhoneWs">
+<complexContent>
+<extension base="impl:MemAttrRowWs">
+<sequence>
+<element name="phArea" nillable="true" type="xsd:string"/>
+<element name="phCmnt" nillable="true" type="xsd:string"/>
+<element name="phExtn" nillable="true" type="xsd:string"/>
+<element name="phIcc" nillable="true" type="xsd:string"/>
+<element name="phNumber" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemPhoneWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemPhoneWs"/>
+</sequence>
+</complexType>
+<complexType name="MemQrydWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="qryRole" type="xsd:int"/>
+<element name="qryVal" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemQrydWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemQrydWs"/>
+</sequence>
+</complexType>
+<complexType name="MemRuleWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="memRecno2" type="xsd:long"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="ruleType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemRuleWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemRuleWs"/>
+</sequence>
+</complexType>
+<complexType name="MemXeiaWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="eiaStat" nillable="true" type="xsd:string"/>
+<element name="eiaStat2" nillable="true" type="xsd:string"/>
+<element name="eiaStatno" type="xsd:int"/>
+<element name="eiaStatno2" type="xsd:int"/>
+<element name="eiaType" nillable="true" type="xsd:string"/>
+<element name="eiaTypeno" type="xsd:int"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="maxScore" type="xsd:short"/>
+<element name="minScore" type="xsd:short"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recCtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recCtimeSince" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="recMtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recMtimeSince" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="supMemRecno" type="xsd:long"/>
+<element name="tskStat" nillable="true" type="xsd:string"/>
+<element name="tskStatno" type="xsd:int"/>
+<element name="tskType" nillable="true" type="xsd:string"/>
+<element name="tskTypeno" type="xsd:int"/>
+<element name="usrLogin" nillable="true" type="xsd:string"/>
+<element name="usrRecno" type="xsd:int"/>
+<element name="xtskCarn" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemXeiaWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemXeiaWs"/>
+</sequence>
+</complexType>
+<complexType name="MemXtskWs">
+<complexContent>
+<extension base="impl:MemRowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="maxScore" type="xsd:short"/>
+<element name="minScore" type="xsd:short"/>
+<element name="ownerName" nillable="true" type="xsd:string"/>
+<element name="ownerRecno" type="xsd:int"/>
+<element name="ownerType" nillable="true" type="xsd:string"/>
+<element name="prevOwnerName" nillable="true" type="xsd:string"/>
+<element name="prevOwnerRecno" type="xsd:int"/>
+<element name="prevOwnerType" nillable="true" type="xsd:string"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recCtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recCtimeSince" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="recMtimeBefore" nillable="true" type="xsd:string"/>
+<element name="recMtimeSince" nillable="true" type="xsd:string"/>
+<element name="relatedMembers" type="xsd:int"/>
+<element name="setRecno" type="xsd:long"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="supMemRecno" type="xsd:long"/>
+<element name="tskRecno" type="xsd:long"/>
+<element name="tskStat" nillable="true" type="xsd:string"/>
+<element name="tskStatno" type="xsd:int"/>
+<element name="tskType" nillable="true" type="xsd:string"/>
+<element name="tskTypeno" type="xsd:int"/>
+<element name="usrLogin" nillable="true" type="xsd:string"/>
+<element name="usrRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemXtskWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemXtskWs"/>
+</sequence>
+</complexType>
+<complexType name="Member">
+<sequence>
+<element name="audHead" nillable="true" type="impl:ArrayOfAudHeadWs"/>
+<element name="compareInfo" nillable="true" type="xsd:string"/>
+<element name="entIque" nillable="true" type="impl:ArrayOfEntIqueWs"/>
+<element name="entLink" nillable="true" type="impl:ArrayOfEntLinkWs"/>
+<element name="entNote" nillable="true" type="impl:ArrayOfEntNoteWs"/>
+<element name="entOque" nillable="true" type="impl:ArrayOfEntOqueWs"/>
+<element name="entRule" nillable="true" type="impl:ArrayOfEntRuleWs"/>
+<element name="entXeia" nillable="true" type="impl:ArrayOfEntXeiaWs"/>
+<element name="entXtsk" nillable="true" type="impl:ArrayOfEntXtskWs"/>
+<element name="memAddr" nillable="true" type="impl:ArrayOfMemAddrWs"/>
+<element name="memAppt" nillable="true" type="impl:ArrayOfMemApptWs"/>
+<element name="memAttr" nillable="true" type="impl:ArrayOfMemAttrWs"/>
+<element name="memBktd" nillable="true" type="impl:ArrayOfMemBktdWs"/>
+<element name="memCmpd" nillable="true" type="impl:ArrayOfMemCmpdWs"/>
+<element name="memCont" nillable="true" type="impl:ArrayOfMemContWs"/>
+<element name="memDate" nillable="true" type="impl:ArrayOfMemDateWs"/>
+<element name="memDrug" nillable="true" type="impl:ArrayOfMemDrugWs"/>
+<element name="memElig" nillable="true" type="impl:ArrayOfMemEligWs"/>
+<element name="memEnum" nillable="true" type="impl:ArrayOfMemEnumWs"/>
+<element name="memExta" nillable="true" type="impl:ArrayOfMemExtaWs"/>
+<element name="memExtb" nillable="true" type="impl:ArrayOfMemExtbWs"/>
+<element name="memExtc" nillable="true" type="impl:ArrayOfMemExtcWs"/>
+<element name="memExtd" nillable="true" type="impl:ArrayOfMemExtdWs"/>
+<element name="memExte" nillable="true" type="impl:ArrayOfMemExteWs"/>
+<element name="memHead" nillable="true" type="impl:MemHeadWs"/>
+<element name="memIdent" nillable="true" type="impl:ArrayOfMemIdentWs"/>
+<element name="memIds" nillable="true" type="impl:ArrayOfMemIdsWs"/>
+<element name="memIque" nillable="true" type="impl:ArrayOfMemIqueWs"/>
+<element name="memLink" nillable="true" type="impl:ArrayOfMemLinkWs"/>
+<element name="memName" nillable="true" type="impl:ArrayOfMemNameWs"/>
+<element name="memNote" nillable="true" type="impl:ArrayOfMemNoteWs"/>
+<element name="memOque" nillable="true" type="impl:ArrayOfMemOqueWs"/>
+<element name="memOref" nillable="true" type="impl:ArrayOfMemOrefWs"/>
+<element name="memPhone" nillable="true" type="impl:ArrayOfMemPhoneWs"/>
+<element name="memQryd" nillable="true" type="impl:ArrayOfMemQrydWs"/>
+<element name="memRule" nillable="true" type="impl:ArrayOfMemRuleWs"/>
+<element name="memXeia" nillable="true" type="impl:ArrayOfMemXeiaWs"/>
+<element name="memXtsk" nillable="true" type="impl:ArrayOfMemXtskWs"/>
+</sequence>
+</complexType>
+<complexType name="MemberSearchRequest">
+<complexContent>
+<extension base="impl:MemberIxnRequestBase">
+<sequence>
+<element name="cvwName" nillable="true" type="xsd:string"/>
+<element name="maxCand" nillable="true" type="xsd:int"/>
+<element name="maxMems" nillable="true" type="xsd:int"/>
+<element name="maxRows" nillable="true" type="xsd:int"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="minScore" nillable="true" type="xsd:short"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="FederatedError">
+<sequence>
+<element name="message" nillable="true" type="xsd:string"/>
+<element name="stackTrace" nillable="true" type="xsd:string"/>
+<element name="url" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfFederatedError">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:FederatedError"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfMember">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Member"/>
+</sequence>
+</complexType>
+<complexType name="FederatedResult">
+<sequence>
+<element name="errors" nillable="true" type="impl:ArrayOfFederatedError"/>
+<element name="members" nillable="true" type="impl:ArrayOfMember"/>
+<element name="status" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="MemberMatchRequest">
+<complexContent>
+<extension base="impl:MemberIxnRequestBase">
+<sequence>
+<element name="entRecno" nillable="true" type="xsd:long"/>
+<element name="maxRows" nillable="true" type="xsd:int"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="minScore" nillable="true" type="xsd:short"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="cvwName" nillable="true" type="xsd:string"/>
+<element name="entRecno" nillable="true" type="xsd:long"/>
+<element name="entRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="getType" nillable="true" type="xsd:string"/>
+<element name="keySortOrder" nillable="true" type="xsd:string"/>
+<element name="maxMems" nillable="true" type="xsd:int"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memIdnums" nillable="true" type="impl:ArrayOf_xsd_string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="memStatFilter" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCodes" nillable="true" type="impl:ArrayOf_xsd_string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entPrior" type="xsd:short"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="evtCtime" nillable="true" type="xsd:dateTime"/>
+<element name="evtInitiator" nillable="true" type="xsd:string"/>
+<element name="evtLocation" nillable="true" type="xsd:string"/>
+<element name="evtType" nillable="true" type="xsd:string"/>
+<element name="matchMode" nillable="true" type="xsd:string"/>
+<element name="memMode" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="putType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberPutQualRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entPrior" type="xsd:short"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="evtCtime" nillable="true" type="xsd:dateTime"/>
+<element name="evtInitiator" nillable="true" type="xsd:string"/>
+<element name="evtLocation" nillable="true" type="xsd:string"/>
+<element name="evtType" nillable="true" type="xsd:string"/>
+<element name="matchMode" nillable="true" type="xsd:string"/>
+<element name="memMode" nillable="true" type="xsd:string"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="putType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberCompareRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnumA" nillable="true" type="xsd:string"/>
+<element name="memIdnumB" nillable="true" type="xsd:string"/>
+<element name="memRecnoA" nillable="true" type="xsd:long"/>
+<element name="memRecnoB" nillable="true" type="xsd:long"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCodeA" nillable="true" type="xsd:string"/>
+<element name="srcCodeB" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberDeleteRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberUndeleteRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberDropRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberMergeRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnumObs" nillable="true" type="xsd:string"/>
+<element name="memIdnumSrv" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCodeObs" nillable="true" type="xsd:string"/>
+<element name="srcCodeSrv" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberUnmergeRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memIdnumObs" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="srcCodeObs" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberPostItRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="memNote" nillable="true" type="impl:MemNoteWs"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="putType" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="MemberScoreRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="members" nillable="true" type="impl:ArrayOfMember"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="TaskGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="getType" nillable="true" type="xsd:string"/>
+<element name="maxMems" nillable="true" type="xsd:int"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memStatFilter" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="TaskSearchRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="maxMems" nillable="true" type="xsd:int"/>
+<element name="maxRows" nillable="true" type="xsd:int"/>
+<element name="memStatFilter" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="TaskPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="putType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EiaGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entRecno" nillable="true" type="xsd:long"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="getType" nillable="true" type="xsd:string"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" nillable="true" type="xsd:long"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EiaPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="putType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EiaSearchRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="maxMems" nillable="true" type="xsd:int"/>
+<element name="maxRows" nillable="true" type="xsd:int"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="member" nillable="true" type="impl:Member"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segAttrFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+<element name="srcCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="DictionaryGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="DicRowWs">
+<complexContent>
+<extension base="impl:RowWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="recStat" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="AppDataWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="appRecno" type="xsd:int"/>
+<element name="appSeqno" type="xsd:int"/>
+<element name="dataVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfAppDataWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:AppDataWs"/>
+</sequence>
+</complexType>
+<complexType name="AppHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="appName" nillable="true" type="xsd:string"/>
+<element name="appRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfAppHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:AppHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="AppPropWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="appRecno" type="xsd:int"/>
+<element name="propName" nillable="true" type="xsd:string"/>
+<element name="propVal" nillable="true" type="xsd:string"/>
+<element name="segRecno" type="xsd:int"/>
+<element name="theRecno" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfAppPropWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:AppPropWs"/>
+</sequence>
+</complexType>
+<complexType name="BktFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="bktDoneName" nillable="true" type="xsd:string"/>
+<element name="bktFuncCode" nillable="true" type="xsd:string"/>
+<element name="bktFuncDesc" nillable="true" type="xsd:string"/>
+<element name="bktFuncName" nillable="true" type="xsd:string"/>
+<element name="bktInitName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxArgs" type="xsd:short"/>
+<element name="minArgs" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfBktFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:BktFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="BktXgenWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="bktFuncCode" nillable="true" type="xsd:string"/>
+<element name="bktGenDesc" nillable="true" type="xsd:string"/>
+<element name="bktGenType" nillable="true" type="xsd:string"/>
+<element name="genFuncCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfBktXgenWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:BktXgenWs"/>
+</sequence>
+</complexType>
+<complexType name="CmpFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="NRoles" type="xsd:int"/>
+<element name="cmpDoneName" nillable="true" type="xsd:string"/>
+<element name="cmpFuncCode" nillable="true" type="xsd:string"/>
+<element name="cmpFuncDesc" nillable="true" type="xsd:string"/>
+<element name="cmpFuncName" nillable="true" type="xsd:string"/>
+<element name="cmpInitName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxArgs" type="xsd:short"/>
+<element name="minArgs" type="xsd:short"/>
+<element name="wgtFuncCode" nillable="true" type="xsd:string"/>
+<element name="wgtSfx1" nillable="true" type="xsd:string"/>
+<element name="wgtSfx2" nillable="true" type="xsd:string"/>
+<element name="wgtSfx3" nillable="true" type="xsd:string"/>
+<element name="wgtSfx4" nillable="true" type="xsd:string"/>
+<element name="wgtSfx5" nillable="true" type="xsd:string"/>
+<element name="wgtSfx6" nillable="true" type="xsd:string"/>
+<element name="wgtSfx7" nillable="true" type="xsd:string"/>
+<element name="wgtSfx8" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCmpFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CmpFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="CmpHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="cmpArgs" nillable="true" type="xsd:string"/>
+<element name="cmpCode" nillable="true" type="xsd:string"/>
+<element name="cmpDesc" nillable="true" type="xsd:string"/>
+<element name="cmpName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCmpHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CmpHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="CmpSpecWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="anonStrCode" nillable="true" type="xsd:string"/>
+<element name="cmpArgs" nillable="true" type="xsd:string"/>
+<element name="cmpCode" nillable="true" type="xsd:string"/>
+<element name="cmpDesc" nillable="true" type="xsd:string"/>
+<element name="cmpFuncCode" nillable="true" type="xsd:string"/>
+<element name="cmpGroupno" type="xsd:int"/>
+<element name="cmpMode" type="xsd:int"/>
+<element name="cmpRole1" type="xsd:int"/>
+<element name="cmpRole2" type="xsd:int"/>
+<element name="cmpRole3" type="xsd:int"/>
+<element name="cmpRole4" type="xsd:int"/>
+<element name="cmpSeqno" type="xsd:int"/>
+<element name="cmpSpecCode" nillable="true" type="xsd:string"/>
+<element name="equiStrCode" nillable="true" type="xsd:string"/>
+<element name="isRI" nillable="true" type="xsd:string"/>
+<element name="wgtArgs" nillable="true" type="xsd:string"/>
+<element name="wgtCUT" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCmpSpecWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CmpSpecWs"/>
+</sequence>
+</complexType>
+<complexType name="CvwFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="cvwFuncCode" nillable="true" type="xsd:string"/>
+<element name="cvwFuncName" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCvwFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CvwFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="CvwHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="audLevel" type="xsd:short"/>
+<element name="cvwDesc" nillable="true" type="xsd:string"/>
+<element name="cvwFuncArgs" nillable="true" type="xsd:string"/>
+<element name="cvwFuncCode" nillable="true" type="xsd:string"/>
+<element name="cvwKind" nillable="true" type="xsd:string"/>
+<element name="cvwName" nillable="true" type="xsd:string"/>
+<element name="cvwRecno" type="xsd:int"/>
+<element name="cvwType" nillable="true" type="xsd:string"/>
+<element name="isEnhanced" nillable="true" type="xsd:string"/>
+<element name="maxRows" type="xsd:short"/>
+<element name="mcaLevel" type="xsd:short"/>
+<element name="memTypeno" type="xsd:int"/>
+<element name="rsFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCvwHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CvwHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="CvwXsegWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="attrPrior" type="xsd:int"/>
+<element name="attrRecno" type="xsd:int"/>
+<element name="cvwFuncArgs" nillable="true" type="xsd:string"/>
+<element name="cvwFuncCode" nillable="true" type="xsd:string"/>
+<element name="cvwRecno" type="xsd:int"/>
+<element name="segRecno" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfCvwXsegWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:CvwXsegWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdXbktWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="bktRole" type="xsd:long"/>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdGrp" type="xsd:int"/>
+<element name="dvdGrpLabel" nillable="true" type="xsd:string"/>
+<element name="dvdSeqno" type="xsd:int"/>
+<element name="maxBktFreq" type="xsd:int"/>
+<element name="maxNway" type="xsd:short"/>
+<element name="minNway" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdXbktWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdXbktWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdXcmpWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="cmpRole" type="xsd:int"/>
+<element name="cmpRoleLabel" nillable="true" type="xsd:string"/>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdSeqno" type="xsd:int"/>
+<element name="rsFilter" nillable="true" type="xsd:string"/>
+<element name="stdRole" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdXcmpWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdXcmpWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdXqryWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdSeqno" type="xsd:int"/>
+<element name="qryRole" type="xsd:int"/>
+<element name="qryRoleLabel" nillable="true" type="xsd:string"/>
+<element name="rsFilter" nillable="true" type="xsd:string"/>
+<element name="stdRole" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdXqryWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdXqryWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdXstdWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="anonStrCode" nillable="true" type="xsd:string"/>
+<element name="attrCode" nillable="true" type="xsd:string"/>
+<element name="cmapStrCode" nillable="true" type="xsd:string"/>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdSeqno" type="xsd:int"/>
+<element name="equiStrCode" nillable="true" type="xsd:string"/>
+<element name="fldArgs" nillable="true" type="xsd:string"/>
+<element name="rsFilter" nillable="true" type="xsd:string"/>
+<element name="stdFuncCode" nillable="true" type="xsd:string"/>
+<element name="stdRole1" type="xsd:int"/>
+<element name="stdRole1Label" nillable="true" type="xsd:string"/>
+<element name="stdRole2" type="xsd:int"/>
+<element name="stdRole2Label" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdXstdWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdXstdWs"/>
+</sequence>
+</complexType>
+<complexType name="DvdYbktWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="anonStrCode" nillable="true" type="xsd:string"/>
+<element name="bktFuncCode" nillable="true" type="xsd:string"/>
+<element name="bktGenType" nillable="true" type="xsd:string"/>
+<element name="cmpRole" type="xsd:int"/>
+<element name="dvdArgs" nillable="true" type="xsd:string"/>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="dvdDesc" nillable="true" type="xsd:string"/>
+<element name="dvdGrp" type="xsd:int"/>
+<element name="dvdSeqno" type="xsd:int"/>
+<element name="equiStrCode" nillable="true" type="xsd:string"/>
+<element name="genFuncCode" nillable="true" type="xsd:string"/>
+<element name="maxTokens" type="xsd:short"/>
+<element name="minTokens" type="xsd:short"/>
+<element name="rbktStrCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfDvdYbktWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DvdYbktWs"/>
+</sequence>
+</complexType>
+<complexType name="EdtElemWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="edtCode" nillable="true" type="xsd:string"/>
+<element name="elemDesc" nillable="true" type="xsd:string"/>
+<element name="elemRecno" type="xsd:int"/>
+<element name="elemVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEdtElemWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EdtElemWs"/>
+</sequence>
+</complexType>
+<complexType name="EdtHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="edtCode" nillable="true" type="xsd:string"/>
+<element name="edtName" nillable="true" type="xsd:string"/>
+<element name="edtOwner" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEdtHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EdtHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="EiaStatWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="eiaStat" nillable="true" type="xsd:string"/>
+<element name="eiaStatCat" nillable="true" type="xsd:string"/>
+<element name="eiaStatLabel" nillable="true" type="xsd:string"/>
+<element name="eiaStatno" type="xsd:int"/>
+<element name="isDeletable" nillable="true" type="xsd:string"/>
+<element name="isResolved" nillable="true" type="xsd:string"/>
+<element name="isUpdatable" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEiaStatWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EiaStatWs"/>
+</sequence>
+</complexType>
+<complexType name="EiaTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="eiaKind" nillable="true" type="xsd:string"/>
+<element name="eiaType" nillable="true" type="xsd:string"/>
+<element name="eiaTypeCat" nillable="true" type="xsd:string"/>
+<element name="eiaTypeLabel" nillable="true" type="xsd:string"/>
+<element name="eiaTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEiaTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EiaTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="EntTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="autoLinkSS" nillable="true" type="xsd:string"/>
+<element name="cmpCode" nillable="true" type="xsd:string"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="entTypeCat" nillable="true" type="xsd:string"/>
+<element name="entTypeDesc" nillable="true" type="xsd:string"/>
+<element name="entTypeLabel" nillable="true" type="xsd:string"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="hasIque" nillable="true" type="xsd:string"/>
+<element name="hasLink" nillable="true" type="xsd:string"/>
+<element name="hasNote" nillable="true" type="xsd:string"/>
+<element name="hasOque" nillable="true" type="xsd:string"/>
+<element name="hasRule" nillable="true" type="xsd:string"/>
+<element name="hasXeia" nillable="true" type="xsd:string"/>
+<element name="hasXtsk" nillable="true" type="xsd:string"/>
+<element name="isAsync" nillable="true" type="xsd:string"/>
+<element name="isTrans" nillable="true" type="xsd:string"/>
+<element name="maxBktRole" type="xsd:long"/>
+<element name="maxFreqCands" type="xsd:int"/>
+<element name="maxEntSize" type="xsd:int"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="minBktRole" type="xsd:long"/>
+<element name="msFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEntTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EntTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="EvtTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="evtType" nillable="true" type="xsd:string"/>
+<element name="evtTypeCat" nillable="true" type="xsd:string"/>
+<element name="evtTypeLabel" nillable="true" type="xsd:string"/>
+<element name="evtTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfEvtTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:EvtTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="ExtFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="extDoneName" nillable="true" type="xsd:string"/>
+<element name="extFuncCode" nillable="true" type="xsd:string"/>
+<element name="extFuncDesc" nillable="true" type="xsd:string"/>
+<element name="extFuncName" nillable="true" type="xsd:string"/>
+<element name="extInitName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfExtFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ExtFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="GenFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="genDoneName" nillable="true" type="xsd:string"/>
+<element name="genFuncCode" nillable="true" type="xsd:string"/>
+<element name="genFuncDesc" nillable="true" type="xsd:string"/>
+<element name="genFuncName" nillable="true" type="xsd:string"/>
+<element name="genInitName" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxArgs" type="xsd:short"/>
+<element name="minArgs" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfGenFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GenFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="GrpHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="defCvwRecno" type="xsd:int"/>
+<element name="grpName" nillable="true" type="xsd:string"/>
+<element name="grpRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfGrpHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GrpHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="GrpXcvwWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="cvwRecno" type="xsd:int"/>
+<element name="grpRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfGrpXcvwWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GrpXcvwWs"/>
+</sequence>
+</complexType>
+<complexType name="GrpXixnWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="grpRecno" type="xsd:int"/>
+<element name="ixnRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfGrpXixnWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GrpXixnWs"/>
+</sequence>
+</complexType>
+<complexType name="GrpXsegWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="attrRecno" type="xsd:int"/>
+<element name="grpRecno" type="xsd:int"/>
+<element name="segPerm" nillable="true" type="xsd:string"/>
+<element name="segRecno" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfGrpXsegWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:GrpXsegWs"/>
+</sequence>
+</complexType>
+<complexType name="HandlerWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="callbackType" type="xsd:int"/>
+<element name="handlerArgs" nillable="true" type="xsd:string"/>
+<element name="handlerName" nillable="true" type="xsd:string"/>
+<element name="handlerSeqno" type="xsd:int"/>
+<element name="handlerno" type="xsd:int"/>
+<element name="ixnCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfHandlerWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:HandlerWs"/>
+</sequence>
+</complexType>
+<complexType name="IxnHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="audLevel" type="xsd:short"/>
+<element name="avgBktCands" type="xsd:int"/>
+<element name="avgRcvSize" type="xsd:int"/>
+<element name="avgSndSize" type="xsd:int"/>
+<element name="avgTicks" type="xsd:int"/>
+<element name="isSingle" nillable="true" type="xsd:string"/>
+<element name="ixnCat" nillable="true" type="xsd:string"/>
+<element name="ixnCode" nillable="true" type="xsd:string"/>
+<element name="ixnLabel" nillable="true" type="xsd:string"/>
+<element name="ixnName" nillable="true" type="xsd:string"/>
+<element name="ixnRecno" type="xsd:int"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxBktCands" type="xsd:int"/>
+<element name="maxRcvSize" type="xsd:int"/>
+<element name="maxSndSize" type="xsd:int"/>
+<element name="maxTicks" type="xsd:int"/>
+<element name="minRcvSize" type="xsd:int"/>
+<element name="minSndSize" type="xsd:int"/>
+<element name="minTicks" type="xsd:int"/>
+<element name="totBktCands" type="xsd:long"/>
+<element name="totBktSrchs" type="xsd:int"/>
+<element name="totExecs" type="xsd:int"/>
+<element name="totGood" type="xsd:int"/>
+<element name="totRcvSize" type="xsd:int"/>
+<element name="totSndSize" type="xsd:int"/>
+<element name="totTicks" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfIxnHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:IxnHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="LibHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="freeFunc" nillable="true" type="xsd:string"/>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="libName" nillable="true" type="xsd:string"/>
+<element name="loadFunc" nillable="true" type="xsd:string"/>
+<element name="platCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfLibHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:LibHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="MemStatWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="isDerived" nillable="true" type="xsd:string"/>
+<element name="memStat" nillable="true" type="xsd:string"/>
+<element name="memStatCat" nillable="true" type="xsd:string"/>
+<element name="memStatLabel" nillable="true" type="xsd:string"/>
+<element name="memStatno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemStatWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemStatWs"/>
+</sequence>
+</complexType>
+<complexType name="MemTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="dvdCode" nillable="true" type="xsd:string"/>
+<element name="hasHistory" nillable="true" type="xsd:string"/>
+<element name="memType" nillable="true" type="xsd:string"/>
+<element name="memTypeCat" nillable="true" type="xsd:string"/>
+<element name="memTypeDesc" nillable="true" type="xsd:string"/>
+<element name="memTypeLabel" nillable="true" type="xsd:string"/>
+<element name="memTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfMemTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:MemTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="RelRuleWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="attrRecnoLeft" type="xsd:int"/>
+<element name="attrRecnoRight" type="xsd:int"/>
+<element name="fldNameLeft" nillable="true" type="xsd:string"/>
+<element name="fldNameRight" nillable="true" type="xsd:string"/>
+<element name="isRefLeft" nillable="true" type="xsd:string"/>
+<element name="isRefRight" nillable="true" type="xsd:string"/>
+<element name="relRuleSeqno" type="xsd:int"/>
+<element name="relTypeno" type="xsd:int"/>
+<element name="srcRecnoLeft" type="xsd:int"/>
+<element name="srcRecnoRight" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelRuleWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelRuleWs"/>
+</sequence>
+</complexType>
+<complexType name="RelSegAttrWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="attrCode" nillable="true" type="xsd:string"/>
+<element name="attrDesc" nillable="true" type="xsd:string"/>
+<element name="attrLabel" nillable="true" type="xsd:string"/>
+<element name="attrName" nillable="true" type="xsd:string"/>
+<element name="nsActive" type="xsd:short"/>
+<element name="nsExists" type="xsd:short"/>
+<element name="relAttrRecno" type="xsd:int"/>
+<element name="relTypeno" type="xsd:int"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelSegAttrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelSegAttrWs"/>
+</sequence>
+</complexType>
+<complexType name="RelTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="entTypenoLeft" type="xsd:int"/>
+<element name="entTypenoRight" type="xsd:int"/>
+<element name="hasHistory" nillable="true" type="xsd:string"/>
+<element name="isDirected" nillable="true" type="xsd:string"/>
+<element name="isImplicit" nillable="true" type="xsd:string"/>
+<element name="multiplicity" nillable="true" type="xsd:string"/>
+<element name="relEngFlag" nillable="true" type="xsd:string"/>
+<element name="relName" nillable="true" type="xsd:string"/>
+<element name="relType" nillable="true" type="xsd:string"/>
+<element name="relTypeno" type="xsd:int"/>
+<element name="relUsrFlag" nillable="true" type="xsd:string"/>
+<element name="requiredHierarchy" nillable="true" type="xsd:string"/>
+<element name="requiredLeft" nillable="true" type="xsd:string"/>
+<element name="requiredRight" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="SegAttrWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="adtRole" type="xsd:int"/>
+<element name="attrCode" nillable="true" type="xsd:string"/>
+<element name="attrDesc" nillable="true" type="xsd:string"/>
+<element name="attrLabel" nillable="true" type="xsd:string"/>
+<element name="attrName" nillable="true" type="xsd:string"/>
+<element name="attrRecno" type="xsd:int"/>
+<element name="edtCode" nillable="true" type="xsd:string"/>
+<element name="isVirtual" nillable="true" type="xsd:string"/>
+<element name="memTypeno" type="xsd:int"/>
+<element name="msFilter" nillable="true" type="xsd:string"/>
+<element name="nsActive" type="xsd:short"/>
+<element name="nsExists" type="xsd:short"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSegAttrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SegAttrWs"/>
+</sequence>
+</complexType>
+<complexType name="SegHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="engineOnly" nillable="true" type="xsd:string"/>
+<element name="hasAttr" nillable="true" type="xsd:string"/>
+<element name="hasHistory" nillable="true" type="xsd:string"/>
+<element name="objCode" nillable="true" type="xsd:string"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+<element name="segName" nillable="true" type="xsd:string"/>
+<element name="segRecno" type="xsd:int"/>
+<element name="segVerno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSegHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SegHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="SegXfldWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="fldLabel" nillable="true" type="xsd:string"/>
+<element name="fldLength" type="xsd:int"/>
+<element name="fldName" nillable="true" type="xsd:string"/>
+<element name="fldSeqno" type="xsd:int"/>
+<element name="fldType" nillable="true" type="xsd:string"/>
+<element name="isPkey" nillable="true" type="xsd:string"/>
+<element name="isRequired" nillable="true" type="xsd:string"/>
+<element name="isVirtual" nillable="true" type="xsd:string"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSegXfldWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SegXfldWs"/>
+</sequence>
+</complexType>
+<complexType name="SeqGenWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="colName" nillable="true" type="xsd:string"/>
+<element name="seqIncr" type="xsd:int"/>
+<element name="seqName" nillable="true" type="xsd:string"/>
+<element name="seqNum" type="xsd:long"/>
+<element name="tabName" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSeqGenWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SeqGenWs"/>
+</sequence>
+</complexType>
+<complexType name="SrcAttrWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="attrRecno" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSrcAttrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SrcAttrWs"/>
+</sequence>
+</complexType>
+<complexType name="SrcHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="defEntPrior" type="xsd:short"/>
+<element name="isVirtual" nillable="true" type="xsd:string"/>
+<element name="maxLen" type="xsd:int"/>
+<element name="memTypeno" type="xsd:int"/>
+<element name="minLen" type="xsd:int"/>
+<element name="phyCode" nillable="true" type="xsd:string"/>
+<element name="poCmpCode" nillable="true" type="xsd:string"/>
+<element name="poScore" type="xsd:short"/>
+<element name="riCheck" nillable="true" type="xsd:string"/>
+<element name="srcCode" nillable="true" type="xsd:string"/>
+<element name="srcName" nillable="true" type="xsd:string"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="srcType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSrcHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SrcHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="SrcXentWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="entTypeno" type="xsd:int"/>
+<element name="isTrusted" nillable="true" type="xsd:string"/>
+<element name="srcPrior" type="xsd:int"/>
+<element name="srcRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSrcXentWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SrcXentWs"/>
+</sequence>
+</complexType>
+<complexType name="SrcXsrcWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="alScore" type="xsd:short"/>
+<element name="crScore" type="xsd:short"/>
+<element name="entTypeno" type="xsd:int"/>
+<element name="srcRecno1" type="xsd:int"/>
+<element name="srcRecno2" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSrcXsrcWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SrcXsrcWs"/>
+</sequence>
+</complexType>
+<complexType name="StdFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxArgs" type="xsd:short"/>
+<element name="maxFlds" type="xsd:short"/>
+<element name="minArgs" type="xsd:short"/>
+<element name="minFlds" type="xsd:short"/>
+<element name="stdDoneName" nillable="true" type="xsd:string"/>
+<element name="stdFuncCode" nillable="true" type="xsd:string"/>
+<element name="stdFuncDesc" nillable="true" type="xsd:string"/>
+<element name="stdFuncName" nillable="true" type="xsd:string"/>
+<element name="stdInitName" nillable="true" type="xsd:string"/>
+<element name="stdType1" nillable="true" type="xsd:string"/>
+<element name="stdType2" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStdFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StdFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="StdTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="stdType" nillable="true" type="xsd:string"/>
+<element name="stdTypeDesc" nillable="true" type="xsd:string"/>
+<element name="stdTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStdTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StdTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="StrAnonWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrAnonWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrAnonWs"/>
+</sequence>
+</complexType>
+<complexType name="StrCmapWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strIdxno" type="xsd:int"/>
+<element name="strVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrCmapWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrCmapWs"/>
+</sequence>
+</complexType>
+<complexType name="StrEditWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="inpStrVal" nillable="true" type="xsd:string"/>
+<element name="outStrVal" nillable="true" type="xsd:string"/>
+<element name="strCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrEditWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrEditWs"/>
+</sequence>
+</complexType>
+<complexType name="StrEquiWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strVal1" nillable="true" type="xsd:string"/>
+<element name="strVal2" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrEquiWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrEquiWs"/>
+</sequence>
+</complexType>
+<complexType name="StrFreqWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="freqVal" type="xsd:int"/>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrFreqWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrFreqWs"/>
+</sequence>
+</complexType>
+<complexType name="StrHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="freqTot" type="xsd:int"/>
+<element name="maxLen" type="xsd:int"/>
+<element name="minLen" type="xsd:int"/>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strDesc" nillable="true" type="xsd:string"/>
+<element name="strName" nillable="true" type="xsd:string"/>
+<element name="strType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="StrNbktWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="bktVal" nillable="true" type="xsd:string"/>
+<element name="numVal" type="xsd:int"/>
+<element name="strCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrNbktWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrNbktWs"/>
+</sequence>
+</complexType>
+<complexType name="StrSbktWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="bktVal" nillable="true" type="xsd:string"/>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrSbktWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrSbktWs"/>
+</sequence>
+</complexType>
+<complexType name="StrTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strType" nillable="true" type="xsd:string"/>
+<element name="strTypeDesc" nillable="true" type="xsd:string"/>
+<element name="strTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="StrWordWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strCode" nillable="true" type="xsd:string"/>
+<element name="strStd" nillable="true" type="xsd:string"/>
+<element name="strVal" nillable="true" type="xsd:string"/>
+<element name="wordType" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrWordWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrWordWs"/>
+</sequence>
+</complexType>
+<complexType name="StrXstrWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strCode1" nillable="true" type="xsd:string"/>
+<element name="strCode2" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfStrXstrWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:StrXstrWs"/>
+</sequence>
+</complexType>
+<complexType name="SysKeyWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="keyName" nillable="true" type="xsd:string"/>
+<element name="keyVal" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSysKeyWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SysKeyWs"/>
+</sequence>
+</complexType>
+<complexType name="SysPropWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="propName" nillable="true" type="xsd:string"/>
+<element name="propVal" nillable="true" type="xsd:string"/>
+<element name="segRecno" type="xsd:int"/>
+<element name="theRecno" type="xsd:long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfSysPropWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SysPropWs"/>
+</sequence>
+</complexType>
+<complexType name="TskStatWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="isDeletable" nillable="true" type="xsd:string"/>
+<element name="isResolved" nillable="true" type="xsd:string"/>
+<element name="isUpdatable" nillable="true" type="xsd:string"/>
+<element name="tskStat" nillable="true" type="xsd:string"/>
+<element name="tskStatCat" nillable="true" type="xsd:string"/>
+<element name="tskStatLabel" nillable="true" type="xsd:string"/>
+<element name="tskStatno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfTskStatWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:TskStatWs"/>
+</sequence>
+</complexType>
+<complexType name="TskTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="expDays" type="xsd:short"/>
+<element name="isContent" nillable="true" type="xsd:string"/>
+<element name="isLinking" nillable="true" type="xsd:string"/>
+<element name="tskKind" nillable="true" type="xsd:string"/>
+<element name="tskType" nillable="true" type="xsd:string"/>
+<element name="tskTypeCat" nillable="true" type="xsd:string"/>
+<element name="tskTypeLabel" nillable="true" type="xsd:string"/>
+<element name="tskTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfTskTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:TskTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="UsrHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="isExternal" nillable="true" type="xsd:string"/>
+<element name="lastLogin" nillable="true" type="xsd:string"/>
+<element name="usrLogin" nillable="true" type="xsd:string"/>
+<element name="usrPass" nillable="true" type="xsd:string"/>
+<element name="usrRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfUsrHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:UsrHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="Wgt1DimWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtIdxno" type="xsd:short"/>
+<element name="wgtVal" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgt1DimWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Wgt1DimWs"/>
+</sequence>
+</complexType>
+<complexType name="Wgt2DimWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtIdxno" type="xsd:short"/>
+<element name="wgtVal0" type="xsd:int"/>
+<element name="wgtVal1" type="xsd:int"/>
+<element name="wgtVal10" type="xsd:int"/>
+<element name="wgtVal11" type="xsd:int"/>
+<element name="wgtVal12" type="xsd:int"/>
+<element name="wgtVal13" type="xsd:int"/>
+<element name="wgtVal14" type="xsd:int"/>
+<element name="wgtVal15" type="xsd:int"/>
+<element name="wgtVal2" type="xsd:int"/>
+<element name="wgtVal3" type="xsd:int"/>
+<element name="wgtVal4" type="xsd:int"/>
+<element name="wgtVal5" type="xsd:int"/>
+<element name="wgtVal6" type="xsd:int"/>
+<element name="wgtVal7" type="xsd:int"/>
+<element name="wgtVal8" type="xsd:int"/>
+<element name="wgtVal9" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgt2DimWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Wgt2DimWs"/>
+</sequence>
+</complexType>
+<complexType name="Wgt3DimWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtIdx1" type="xsd:short"/>
+<element name="wgtIdx2" type="xsd:short"/>
+<element name="wgtVal0" type="xsd:int"/>
+<element name="wgtVal1" type="xsd:int"/>
+<element name="wgtVal10" type="xsd:int"/>
+<element name="wgtVal11" type="xsd:int"/>
+<element name="wgtVal12" type="xsd:int"/>
+<element name="wgtVal13" type="xsd:int"/>
+<element name="wgtVal14" type="xsd:int"/>
+<element name="wgtVal15" type="xsd:int"/>
+<element name="wgtVal2" type="xsd:int"/>
+<element name="wgtVal3" type="xsd:int"/>
+<element name="wgtVal4" type="xsd:int"/>
+<element name="wgtVal5" type="xsd:int"/>
+<element name="wgtVal6" type="xsd:int"/>
+<element name="wgtVal7" type="xsd:int"/>
+<element name="wgtVal8" type="xsd:int"/>
+<element name="wgtVal9" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgt3DimWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Wgt3DimWs"/>
+</sequence>
+</complexType>
+<complexType name="Wgt4DimWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtIdx1" type="xsd:short"/>
+<element name="wgtIdx2" type="xsd:short"/>
+<element name="wgtIdx3" type="xsd:short"/>
+<element name="wgtVal0" type="xsd:int"/>
+<element name="wgtVal1" type="xsd:int"/>
+<element name="wgtVal10" type="xsd:int"/>
+<element name="wgtVal11" type="xsd:int"/>
+<element name="wgtVal12" type="xsd:int"/>
+<element name="wgtVal13" type="xsd:int"/>
+<element name="wgtVal14" type="xsd:int"/>
+<element name="wgtVal15" type="xsd:int"/>
+<element name="wgtVal2" type="xsd:int"/>
+<element name="wgtVal3" type="xsd:int"/>
+<element name="wgtVal4" type="xsd:int"/>
+<element name="wgtVal5" type="xsd:int"/>
+<element name="wgtVal6" type="xsd:int"/>
+<element name="wgtVal7" type="xsd:int"/>
+<element name="wgtVal8" type="xsd:int"/>
+<element name="wgtVal9" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgt4DimWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Wgt4DimWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtFuncWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="libCode" nillable="true" type="xsd:string"/>
+<element name="maxArgs" type="xsd:short"/>
+<element name="minArgs" type="xsd:short"/>
+<element name="wgtDoneName" nillable="true" type="xsd:string"/>
+<element name="wgtFuncCode" nillable="true" type="xsd:string"/>
+<element name="wgtFuncDesc" nillable="true" type="xsd:string"/>
+<element name="wgtFuncName" nillable="true" type="xsd:string"/>
+<element name="wgtInitName" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtFuncWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtFuncWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtHeadWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtName" nillable="true" type="xsd:string"/>
+<element name="wgtType" nillable="true" type="xsd:string"/>
+<element name="max1dim" type="xsd:short"/>
+<element name="max2dim" type="xsd:short"/>
+<element name="max3dim" type="xsd:short"/>
+<element name="max4dim" type="xsd:short"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtHeadWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtHeadWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtNvalWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="numVal" type="xsd:int"/>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtVal" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtNvalWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtNvalWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtSvalWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="strVal" nillable="true" type="xsd:string"/>
+<element name="wgtCode" nillable="true" type="xsd:string"/>
+<element name="wgtVal" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtSvalWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtSvalWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtTypeWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtType" nillable="true" type="xsd:string"/>
+<element name="wgtTypeDesc" nillable="true" type="xsd:string"/>
+<element name="wgtTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtTypeWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtTypeWs"/>
+</sequence>
+</complexType>
+<complexType name="WgtXwgtWs">
+<complexContent>
+<extension base="impl:DicRowWs">
+<sequence>
+<element name="wgtCode1" nillable="true" type="xsd:string"/>
+<element name="wgtCode2" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfWgtXwgtWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:WgtXwgtWs"/>
+</sequence>
+</complexType>
+<complexType name="Dictionary">
+<sequence>
+<element name="appData" nillable="true" type="impl:ArrayOfAppDataWs"/>
+<element name="appHead" nillable="true" type="impl:ArrayOfAppHeadWs"/>
+<element name="appProp" nillable="true" type="impl:ArrayOfAppPropWs"/>
+<element name="bktFunc" nillable="true" type="impl:ArrayOfBktFuncWs"/>
+<element name="bktXgen" nillable="true" type="impl:ArrayOfBktXgenWs"/>
+<element name="cmpFunc" nillable="true" type="impl:ArrayOfCmpFuncWs"/>
+<element name="cmpHead" nillable="true" type="impl:ArrayOfCmpHeadWs"/>
+<element name="cmpSpec" nillable="true" type="impl:ArrayOfCmpSpecWs"/>
+<element name="cvwFunc" nillable="true" type="impl:ArrayOfCvwFuncWs"/>
+<element name="cvwHead" nillable="true" type="impl:ArrayOfCvwHeadWs"/>
+<element name="cvwXseg" nillable="true" type="impl:ArrayOfCvwXsegWs"/>
+<element name="dvdHead" nillable="true" type="impl:ArrayOfDvdHeadWs"/>
+<element name="dvdXbkt" nillable="true" type="impl:ArrayOfDvdXbktWs"/>
+<element name="dvdXcmp" nillable="true" type="impl:ArrayOfDvdXcmpWs"/>
+<element name="dvdXqry" nillable="true" type="impl:ArrayOfDvdXqryWs"/>
+<element name="dvdXstd" nillable="true" type="impl:ArrayOfDvdXstdWs"/>
+<element name="dvdYbkt" nillable="true" type="impl:ArrayOfDvdYbktWs"/>
+<element name="edtElem" nillable="true" type="impl:ArrayOfEdtElemWs"/>
+<element name="edtHead" nillable="true" type="impl:ArrayOfEdtHeadWs"/>
+<element name="eiaStat" nillable="true" type="impl:ArrayOfEiaStatWs"/>
+<element name="eiaType" nillable="true" type="impl:ArrayOfEiaTypeWs"/>
+<element name="entType" nillable="true" type="impl:ArrayOfEntTypeWs"/>
+<element name="evtType" nillable="true" type="impl:ArrayOfEvtTypeWs"/>
+<element name="extFunc" nillable="true" type="impl:ArrayOfExtFuncWs"/>
+<element name="genFunc" nillable="true" type="impl:ArrayOfGenFuncWs"/>
+<element name="grpHead" nillable="true" type="impl:ArrayOfGrpHeadWs"/>
+<element name="grpXcvw" nillable="true" type="impl:ArrayOfGrpXcvwWs"/>
+<element name="grpXixn" nillable="true" type="impl:ArrayOfGrpXixnWs"/>
+<element name="grpXseg" nillable="true" type="impl:ArrayOfGrpXsegWs"/>
+<element name="handler" nillable="true" type="impl:ArrayOfHandlerWs"/>
+<element name="ixnHead" nillable="true" type="impl:ArrayOfIxnHeadWs"/>
+<element name="libHead" nillable="true" type="impl:ArrayOfLibHeadWs"/>
+<element name="memStat" nillable="true" type="impl:ArrayOfMemStatWs"/>
+<element name="memType" nillable="true" type="impl:ArrayOfMemTypeWs"/>
+<element name="relRule" nillable="true" type="impl:ArrayOfRelRuleWs"/>
+<element name="relSegAttr" nillable="true" type="impl:ArrayOfRelSegAttrWs"/>
+<element name="relType" nillable="true" type="impl:ArrayOfRelTypeWs"/>
+<element name="segAttr" nillable="true" type="impl:ArrayOfSegAttrWs"/>
+<element name="segHead" nillable="true" type="impl:ArrayOfSegHeadWs"/>
+<element name="segXfld" nillable="true" type="impl:ArrayOfSegXfldWs"/>
+<element name="seqGen" nillable="true" type="impl:ArrayOfSeqGenWs"/>
+<element name="srcAttr" nillable="true" type="impl:ArrayOfSrcAttrWs"/>
+<element name="srcHead" nillable="true" type="impl:ArrayOfSrcHeadWs"/>
+<element name="srcXent" nillable="true" type="impl:ArrayOfSrcXentWs"/>
+<element name="srcXsrc" nillable="true" type="impl:ArrayOfSrcXsrcWs"/>
+<element name="stdFunc" nillable="true" type="impl:ArrayOfStdFuncWs"/>
+<element name="stdType" nillable="true" type="impl:ArrayOfStdTypeWs"/>
+<element name="strAnon" nillable="true" type="impl:ArrayOfStrAnonWs"/>
+<element name="strCmap" nillable="true" type="impl:ArrayOfStrCmapWs"/>
+<element name="strEdit" nillable="true" type="impl:ArrayOfStrEditWs"/>
+<element name="strEqui" nillable="true" type="impl:ArrayOfStrEquiWs"/>
+<element name="strFreq" nillable="true" type="impl:ArrayOfStrFreqWs"/>
+<element name="strHead" nillable="true" type="impl:ArrayOfStrHeadWs"/>
+<element name="strNbkt" nillable="true" type="impl:ArrayOfStrNbktWs"/>
+<element name="strSbkt" nillable="true" type="impl:ArrayOfStrSbktWs"/>
+<element name="strType" nillable="true" type="impl:ArrayOfStrTypeWs"/>
+<element name="strWord" nillable="true" type="impl:ArrayOfStrWordWs"/>
+<element name="strXstr" nillable="true" type="impl:ArrayOfStrXstrWs"/>
+<element name="sysKey" nillable="true" type="impl:ArrayOfSysKeyWs"/>
+<element name="sysProp" nillable="true" type="impl:ArrayOfSysPropWs"/>
+<element name="tskStat" nillable="true" type="impl:ArrayOfTskStatWs"/>
+<element name="tskType" nillable="true" type="impl:ArrayOfTskTypeWs"/>
+<element name="usrHead" nillable="true" type="impl:ArrayOfUsrHeadWs"/>
+<element name="wgt1Dim" nillable="true" type="impl:ArrayOfWgt1DimWs"/>
+<element name="wgt2Dim" nillable="true" type="impl:ArrayOfWgt2DimWs"/>
+<element name="wgt3Dim" nillable="true" type="impl:ArrayOfWgt3DimWs"/>
+<element name="wgt4Dim" nillable="true" type="impl:ArrayOfWgt4DimWs"/>
+<element name="wgtFunc" nillable="true" type="impl:ArrayOfWgtFuncWs"/>
+<element name="wgtHead" nillable="true" type="impl:ArrayOfWgtHeadWs"/>
+<element name="wgtNval" nillable="true" type="impl:ArrayOfWgtNvalWs"/>
+<element name="wgtSval" nillable="true" type="impl:ArrayOfWgtSvalWs"/>
+<element name="wgtType" nillable="true" type="impl:ArrayOfWgtTypeWs"/>
+<element name="wgtXwgt" nillable="true" type="impl:ArrayOfWgtXwgtWs"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfDictionary">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Dictionary"/>
+</sequence>
+</complexType>
+<complexType name="DictionaryPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="dictionary" nillable="true" type="impl:Dictionary"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="SegmentDefGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="objCodeFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="FldDefWs">
+<sequence>
+<element name="fldName" nillable="true" type="xsd:string"/>
+<element name="fldOffset" type="xsd:int"/>
+<element name="fldSize" type="xsd:int"/>
+<element name="fldType" nillable="true" type="xsd:string"/>
+<element name="isKey" type="xsd:boolean"/>
+<element name="isNonDB" type="xsd:boolean"/>
+<element name="isNullOk" type="xsd:boolean"/>
+<element name="isSeqNum" type="xsd:boolean"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfFldDefWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:FldDefWs"/>
+</sequence>
+</complexType>
+<complexType name="SegDefWs">
+<sequence>
+<element name="extCode" nillable="true" type="xsd:string"/>
+<element name="fldDef" nillable="true" type="impl:ArrayOfFldDefWs"/>
+<element name="objCode" nillable="true" type="xsd:string"/>
+<element name="objRecno" type="xsd:long"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+<element name="segRecno" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfSegDefWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:SegDefWs"/>
+</sequence>
+</complexType>
+<complexType name="UserInfoGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="GroupInfoGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="grpName" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="AppInfoGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="appName" nillable="true" type="xsd:string"/>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="NetInfoGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EngInfoGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="recStatFilter" nillable="true" type="xsd:string"/>
+<element name="segCodeFilter" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="EngInfoPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="alert" type="xsd:boolean"/>
+<element name="audit" type="xsd:boolean"/>
+<element name="dbSql" type="xsd:boolean"/>
+<element name="debug" type="xsd:boolean"/>
+<element name="timer" type="xsd:boolean"/>
+<element name="trace" type="xsd:boolean"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="relLinknos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType abstract="true" name="RowBeanWs">
+<complexContent>
+<extension base="impl:SegDefBeanWs">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<complexType abstract="true" name="AuditableBeanWs">
+<complexContent>
+<extension base="impl:RowBeanWs">
+<sequence>
+<element name="caudRecno" type="xsd:long"/>
+<element name="maudRecno" type="xsd:long"/>
+<element name="recCtime" nillable="true" type="xsd:string"/>
+<element name="recMtime" nillable="true" type="xsd:string"/>
+<element name="srcFtime" nillable="true" type="xsd:string"/>
+<element name="srcLtime" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="Field">
+<sequence>
+<element name="fldName" nillable="true" type="xsd:string"/>
+<element name="fldType" nillable="true" type="xsd:string"/>
+<element name="fldValue" nillable="true" type="xsd:string"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfField">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Field"/>
+</sequence>
+</complexType>
+<complexType name="RelAttrBeanWs">
+<complexContent>
+<extension base="impl:AuditableBeanWs">
+<sequence>
+<element name="fields" nillable="true" type="impl:ArrayOfField"/>
+<element name="relAttrCode" nillable="true" type="xsd:string"/>
+<element name="relAttrRecno" type="xsd:int"/>
+<element name="relLinkno" type="xsd:long"/>
+<element name="relSeqno" type="xsd:int"/>
+<element name="rowInd" nillable="true" type="xsd:string"/>
+<element name="segCode" nillable="true" type="xsd:string"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelAttrBeanWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelAttrBeanWs"/>
+</sequence>
+</complexType>
+<complexType name="RelLinkWs">
+<complexContent>
+<extension base="impl:AuditableBeanWs">
+<sequence>
+<element name="entRecnoLeft" type="xsd:long"/>
+<element name="entRecnoRight" type="xsd:long"/>
+<element name="recStat" nillable="true" type="xsd:string"/>
+<element name="relAttrBeans" nillable="true" type="impl:ArrayOfRelAttrBeanWs"/>
+<element name="relFlag" nillable="true" type="xsd:string"/>
+<element name="relLinkno" type="xsd:long"/>
+<element name="relSeqno" type="xsd:int"/>
+<element name="relTypeno" type="xsd:int"/>
+<element name="ruleRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelLinkWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelLinkWs"/>
+</sequence>
+</complexType>
+<complexType name="RelationshipSearchRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="dirType" nillable="true" type="xsd:string"/>
+<element name="entRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="relTypeno" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipSearchMapEntry">
+<sequence>
+<element name="entRecno" nillable="true" type="xsd:long"/>
+<element name="relLinks" nillable="true" type="impl:ArrayOfRelLinkWs"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfRelationshipSearchMapEntry">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelationshipSearchMapEntry"/>
+</sequence>
+</complexType>
+<complexType name="RelationshipSearchCountRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="dirType" nillable="true" type="xsd:string"/>
+<element name="entRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+<element name="relTypeno" nillable="true" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipSearchCountMapEntry">
+<sequence>
+<element name="count" nillable="true" type="xsd:long"/>
+<element name="entRecno" nillable="true" type="xsd:long"/>
+</sequence>
+</complexType>
+<complexType name="ArrayOfRelationshipSearchCountMapEntry">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelationshipSearchCountMapEntry"/>
+</sequence>
+</complexType>
+<complexType name="RelationshipPutRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="relLinks" nillable="true" type="impl:ArrayOfRelLinkWs"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipDeleteRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="relLinknos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipPathToRootRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="entRecno" type="xsd:long"/>
+<element name="relTypeno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipTaskGetRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="tskRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelXtskWs">
+<complexContent>
+<extension base="impl:AuditableBeanWs">
+<sequence>
+<element name="recno" type="xsd:long"/>
+<element name="relTypeno" type="xsd:int"/>
+<element name="side" nillable="true" type="xsd:string"/>
+<element name="tskRecno" type="xsd:long"/>
+<element name="tskStatno" type="xsd:int"/>
+<element name="tskTypeno" type="xsd:int"/>
+<element name="usrRecno" type="xsd:int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOfRelXtskWs">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:RelXtskWs"/>
+</sequence>
+</complexType>
+<complexType abstract="true" name="GenericBeanWs">
+<complexContent>
+<extension base="impl:BeanWs">
+<sequence/>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="ArrayOf_xsd_int">
+<sequence>
+<element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:int"/>
+</sequence>
+</complexType>
+<complexType name="RelXtskCriteriaWs">
+<complexContent>
+<extension base="impl:GenericBeanWs">
+<sequence>
+<element name="entRecno" type="xsd:long"/>
+<element name="entType" nillable="true" type="xsd:string"/>
+<element name="keyType" nillable="true" type="xsd:string"/>
+<element name="memIdnum" nillable="true" type="xsd:string"/>
+<element name="memRecno" type="xsd:long"/>
+<element name="recCtimeBefore" nillable="true" type="xsd:dateTime"/>
+<element name="recCtimeSince" nillable="true" type="xsd:dateTime"/>
+<element name="relTypenos" nillable="true" type="impl:ArrayOf_xsd_int"/>
+<element name="srcRecno" type="xsd:int"/>
+<element name="tskStatnos" nillable="true" type="impl:ArrayOf_xsd_int"/>
+<element name="tskTypenos" nillable="true" type="impl:ArrayOf_xsd_int"/>
+<element name="usrRecnos" nillable="true" type="impl:ArrayOf_xsd_int"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipTaskSearchRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="criteria" nillable="true" type="impl:RelXtskCriteriaWs"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipTaskResolveRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="relXtsks" nillable="true" type="impl:ArrayOfRelXtskWs"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexType name="RelationshipTaskDeleteRequest">
+<complexContent>
+<extension base="impl:IxnBaseRequest">
+<sequence>
+<element name="tskRecnos" nillable="true" type="impl:ArrayOf_xsd_long"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="getNetworkInfoResponse">
+<wsdl:part name="getNetworkInfoReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteMemberResponse">
+<wsdl:part name="deleteMemberReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="postItMemberNoteRequest">
+<wsdl:part name="in0" type="impl:MemberPostItRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipsResponse">
+<wsdl:part name="searchRelationshipsReturn" type="impl:ArrayOfRelationshipSearchMapEntry"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putMemberQualRequest">
+<wsdl:part name="in0" type="impl:MemberPutQualRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putMemberQualResponse">
+<wsdl:part name="putMemberQualReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putTaskResponse">
+<wsdl:part name="putTaskReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteMemberRequest">
+<wsdl:part name="in0" type="impl:MemberDeleteRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchEiaRequest">
+<wsdl:part name="in0" type="impl:EiaSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putEngineInfoResponse">
+<wsdl:part name="putEngineInfoReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="matchMemberRequest">
+<wsdl:part name="in0" type="impl:MemberMatchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="matchMemberFederatedRequest">
+<wsdl:part name="in0" type="impl:MemberMatchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="dropMemberRequest">
+<wsdl:part name="in0" type="impl:MemberDropRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="compareMemberRequest">
+<wsdl:part name="in0" type="impl:MemberCompareRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="postItMemberNoteResponse">
+<wsdl:part name="postItMemberNoteReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="compareMemberResponse">
+<wsdl:part name="compareMemberReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getDictionaryResponse">
+<wsdl:part name="getDictionaryReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEngineInfoResponse">
+<wsdl:part name="getEngineInfoReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putEngineInfoRequest">
+<wsdl:part name="in0" type="impl:EngInfoPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteRelationshipsRequest">
+<wsdl:part name="in0" type="impl:RelationshipDeleteRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEngineInfoRequest">
+<wsdl:part name="in0" type="impl:EngInfoGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getSegmentDefRequest">
+<wsdl:part name="in0" type="impl:SegmentDefGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMemberRequest">
+<wsdl:part name="in0" type="impl:MemberGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchTaskRequest">
+<wsdl:part name="in0" type="impl:TaskSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getGroupInfoResponse">
+<wsdl:part name="getGroupInfoReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipsRequest">
+<wsdl:part name="in0" type="impl:RelationshipSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEiaResponse">
+<wsdl:part name="getEiaReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchMemberResponse">
+<wsdl:part name="searchMemberReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMemberFederatedRequest">
+<wsdl:part name="in0" type="impl:MemberGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="unmergeMemberResponse">
+<wsdl:part name="unmergeMemberReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getTaskResponse">
+<wsdl:part name="getTaskReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="resolveRelationshipTasksRequest">
+<wsdl:part name="in0" type="impl:RelationshipTaskResolveRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchMemberRequest">
+<wsdl:part name="in0" type="impl:MemberSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="resolveRelationshipTasksResponse">
+<wsdl:part name="resolveRelationshipTasksReturn" type="impl:ArrayOfRelXtskWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getTaskRequest">
+<wsdl:part name="in0" type="impl:TaskGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="mergeMemberResponse">
+<wsdl:part name="mergeMemberReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putRelationshipsRequest">
+<wsdl:part name="in0" type="impl:RelationshipPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipCountsResponse">
+<wsdl:part name="searchRelationshipCountsReturn" type="impl:ArrayOfRelationshipSearchCountMapEntry"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipTasksResponse">
+<wsdl:part name="getRelationshipTasksReturn" type="impl:ArrayOfRelXtskWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchAndMatchFederatedResponse">
+<wsdl:part name="searchAndMatchFederatedReturn" type="impl:FederatedResult"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEiaRequest">
+<wsdl:part name="in0" type="impl:EiaGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getSegmentDefResponse">
+<wsdl:part name="getSegmentDefReturn" type="impl:ArrayOfSegDefWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="matchMemberFederatedResponse">
+<wsdl:part name="matchMemberFederatedReturn" type="impl:FederatedResult"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putRelationshipsResponse">
+<wsdl:part name="putRelationshipsReturn" type="impl:ArrayOfRelLinkWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getApplicationInfoResponse">
+<wsdl:part name="getApplicationInfoReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getDictionaryRequest">
+<wsdl:part name="in0" type="impl:DictionaryGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteRelationshipTasksRequest">
+<wsdl:part name="in0" type="impl:RelationshipTaskDeleteRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipTasksResponse">
+<wsdl:part name="searchRelationshipTasksReturn" type="impl:ArrayOfRelXtskWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchMemberFederatedRequest">
+<wsdl:part name="in0" type="impl:MemberSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putMemberRequest">
+<wsdl:part name="in0" type="impl:MemberPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putEiaRequest">
+<wsdl:part name="in0" type="impl:EiaPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getUserInfoRequest">
+<wsdl:part name="in0" type="impl:UserInfoGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="scoreMembersResponse">
+<wsdl:part name="scoreMembersReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="scoreMembersRequest">
+<wsdl:part name="in0" type="impl:MemberScoreRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchEiaResponse">
+<wsdl:part name="searchEiaReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchAndMatchFederatedRequest">
+<wsdl:part name="in0" type="impl:MemberSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipTasksRequest">
+<wsdl:part name="in0" type="impl:RelationshipTaskGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putMemberResponse">
+<wsdl:part name="putMemberReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipsRequest">
+<wsdl:part name="in0" type="impl:RelationshipGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putDictionaryResponse">
+<wsdl:part name="putDictionaryReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putEiaResponse">
+<wsdl:part name="putEiaReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipPathToRootResponse">
+<wsdl:part name="getRelationshipPathToRootReturn" type="impl:ArrayOf_xsd_long"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipPathToRootRequest">
+<wsdl:part name="in0" type="impl:RelationshipPathToRootRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="mergeMemberRequest">
+<wsdl:part name="in0" type="impl:MemberMergeRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getRelationshipsResponse">
+<wsdl:part name="getRelationshipsReturn" type="impl:ArrayOfRelLinkWs"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getGroupInfoRequest">
+<wsdl:part name="in0" type="impl:GroupInfoGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putDictionaryRequest">
+<wsdl:part name="in0" type="impl:DictionaryPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMemberResponse">
+<wsdl:part name="getMemberReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="putTaskRequest">
+<wsdl:part name="in0" type="impl:TaskPutRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchTaskResponse">
+<wsdl:part name="searchTaskReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipTasksRequest">
+<wsdl:part name="in0" type="impl:RelationshipTaskSearchRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteRelationshipTasksResponse">
+<wsdl:part name="deleteRelationshipTasksReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="matchMemberResponse">
+<wsdl:part name="matchMemberReturn" type="impl:ArrayOfMember"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchMemberFederatedResponse">
+<wsdl:part name="searchMemberFederatedReturn" type="impl:FederatedResult"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getNetworkInfoRequest">
+<wsdl:part name="in0" type="impl:NetInfoGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="undeleteMemberResponse">
+<wsdl:part name="undeleteMemberReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getMemberFederatedResponse">
+<wsdl:part name="getMemberFederatedReturn" type="impl:FederatedResult"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="undeleteMemberRequest">
+<wsdl:part name="in0" type="impl:MemberUndeleteRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="dropMemberResponse">
+<wsdl:part name="dropMemberReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="searchRelationshipCountsRequest">
+<wsdl:part name="in0" type="impl:RelationshipSearchCountRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getApplicationInfoRequest">
+<wsdl:part name="in0" type="impl:AppInfoGetRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getUserInfoResponse">
+<wsdl:part name="getUserInfoReturn" type="impl:ArrayOfDictionary"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="unmergeMemberRequest">
+<wsdl:part name="in0" type="impl:MemberUnmergeRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteRelationshipsResponse">
+<wsdl:part name="deleteRelationshipsReturn" type="xsd:boolean"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IdentityHubPort">
+<wsdl:operation name="searchAndMatchFederated" parameterOrder="in0">
+<wsdl:input message="impl:searchAndMatchFederatedRequest" name="searchAndMatchFederatedRequest"></wsdl:input>
+<wsdl:output message="impl:searchAndMatchFederatedResponse" name="searchAndMatchFederatedResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="matchMemberFederated" parameterOrder="in0">
+<wsdl:input message="impl:matchMemberFederatedRequest" name="matchMemberFederatedRequest"></wsdl:input>
+<wsdl:output message="impl:matchMemberFederatedResponse" name="matchMemberFederatedResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchMemberFederated" parameterOrder="in0">
+<wsdl:input message="impl:searchMemberFederatedRequest" name="searchMemberFederatedRequest"></wsdl:input>
+<wsdl:output message="impl:searchMemberFederatedResponse" name="searchMemberFederatedResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMemberFederated" parameterOrder="in0">
+<wsdl:input message="impl:getMemberFederatedRequest" name="getMemberFederatedRequest"></wsdl:input>
+<wsdl:output message="impl:getMemberFederatedResponse" name="getMemberFederatedResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putMember" parameterOrder="in0">
+<wsdl:input message="impl:putMemberRequest" name="putMemberRequest"></wsdl:input>
+<wsdl:output message="impl:putMemberResponse" name="putMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putMemberQual" parameterOrder="in0">
+<wsdl:input message="impl:putMemberQualRequest" name="putMemberQualRequest"></wsdl:input>
+<wsdl:output message="impl:putMemberQualResponse" name="putMemberQualResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMember" parameterOrder="in0">
+<wsdl:input message="impl:getMemberRequest" name="getMemberRequest"></wsdl:input>
+<wsdl:output message="impl:getMemberResponse" name="getMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchMember" parameterOrder="in0">
+<wsdl:input message="impl:searchMemberRequest" name="searchMemberRequest"></wsdl:input>
+<wsdl:output message="impl:searchMemberResponse" name="searchMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="matchMember" parameterOrder="in0">
+<wsdl:input message="impl:matchMemberRequest" name="matchMemberRequest"></wsdl:input>
+<wsdl:output message="impl:matchMemberResponse" name="matchMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="compareMember" parameterOrder="in0">
+<wsdl:input message="impl:compareMemberRequest" name="compareMemberRequest"></wsdl:input>
+<wsdl:output message="impl:compareMemberResponse" name="compareMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteMember" parameterOrder="in0">
+<wsdl:input message="impl:deleteMemberRequest" name="deleteMemberRequest"></wsdl:input>
+<wsdl:output message="impl:deleteMemberResponse" name="deleteMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="undeleteMember" parameterOrder="in0">
+<wsdl:input message="impl:undeleteMemberRequest" name="undeleteMemberRequest"></wsdl:input>
+<wsdl:output message="impl:undeleteMemberResponse" name="undeleteMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="dropMember" parameterOrder="in0">
+<wsdl:input message="impl:dropMemberRequest" name="dropMemberRequest"></wsdl:input>
+<wsdl:output message="impl:dropMemberResponse" name="dropMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="mergeMember" parameterOrder="in0">
+<wsdl:input message="impl:mergeMemberRequest" name="mergeMemberRequest"></wsdl:input>
+<wsdl:output message="impl:mergeMemberResponse" name="mergeMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="unmergeMember" parameterOrder="in0">
+<wsdl:input message="impl:unmergeMemberRequest" name="unmergeMemberRequest"></wsdl:input>
+<wsdl:output message="impl:unmergeMemberResponse" name="unmergeMemberResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="postItMemberNote" parameterOrder="in0">
+<wsdl:input message="impl:postItMemberNoteRequest" name="postItMemberNoteRequest"></wsdl:input>
+<wsdl:output message="impl:postItMemberNoteResponse" name="postItMemberNoteResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="scoreMembers" parameterOrder="in0">
+<wsdl:input message="impl:scoreMembersRequest" name="scoreMembersRequest"></wsdl:input>
+<wsdl:output message="impl:scoreMembersResponse" name="scoreMembersResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getTask" parameterOrder="in0">
+<wsdl:input message="impl:getTaskRequest" name="getTaskRequest"></wsdl:input>
+<wsdl:output message="impl:getTaskResponse" name="getTaskResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchTask" parameterOrder="in0">
+<wsdl:input message="impl:searchTaskRequest" name="searchTaskRequest"></wsdl:input>
+<wsdl:output message="impl:searchTaskResponse" name="searchTaskResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putTask" parameterOrder="in0">
+<wsdl:input message="impl:putTaskRequest" name="putTaskRequest"></wsdl:input>
+<wsdl:output message="impl:putTaskResponse" name="putTaskResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getEia" parameterOrder="in0">
+<wsdl:input message="impl:getEiaRequest" name="getEiaRequest"></wsdl:input>
+<wsdl:output message="impl:getEiaResponse" name="getEiaResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putEia" parameterOrder="in0">
+<wsdl:input message="impl:putEiaRequest" name="putEiaRequest"></wsdl:input>
+<wsdl:output message="impl:putEiaResponse" name="putEiaResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchEia" parameterOrder="in0">
+<wsdl:input message="impl:searchEiaRequest" name="searchEiaRequest"></wsdl:input>
+<wsdl:output message="impl:searchEiaResponse" name="searchEiaResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getDictionary" parameterOrder="in0">
+<wsdl:input message="impl:getDictionaryRequest" name="getDictionaryRequest"></wsdl:input>
+<wsdl:output message="impl:getDictionaryResponse" name="getDictionaryResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putDictionary" parameterOrder="in0">
+<wsdl:input message="impl:putDictionaryRequest" name="putDictionaryRequest"></wsdl:input>
+<wsdl:output message="impl:putDictionaryResponse" name="putDictionaryResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getSegmentDef" parameterOrder="in0">
+<wsdl:input message="impl:getSegmentDefRequest" name="getSegmentDefRequest"></wsdl:input>
+<wsdl:output message="impl:getSegmentDefResponse" name="getSegmentDefResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getUserInfo" parameterOrder="in0">
+<wsdl:input message="impl:getUserInfoRequest" name="getUserInfoRequest"></wsdl:input>
+<wsdl:output message="impl:getUserInfoResponse" name="getUserInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getGroupInfo" parameterOrder="in0">
+<wsdl:input message="impl:getGroupInfoRequest" name="getGroupInfoRequest"></wsdl:input>
+<wsdl:output message="impl:getGroupInfoResponse" name="getGroupInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getApplicationInfo" parameterOrder="in0">
+<wsdl:input message="impl:getApplicationInfoRequest" name="getApplicationInfoRequest"></wsdl:input>
+<wsdl:output message="impl:getApplicationInfoResponse" name="getApplicationInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getNetworkInfo" parameterOrder="in0">
+<wsdl:input message="impl:getNetworkInfoRequest" name="getNetworkInfoRequest"></wsdl:input>
+<wsdl:output message="impl:getNetworkInfoResponse" name="getNetworkInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getEngineInfo" parameterOrder="in0">
+<wsdl:input message="impl:getEngineInfoRequest" name="getEngineInfoRequest"></wsdl:input>
+<wsdl:output message="impl:getEngineInfoResponse" name="getEngineInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putEngineInfo" parameterOrder="in0">
+<wsdl:input message="impl:putEngineInfoRequest" name="putEngineInfoRequest"></wsdl:input>
+<wsdl:output message="impl:putEngineInfoResponse" name="putEngineInfoResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationships" parameterOrder="in0">
+<wsdl:input message="impl:getRelationshipsRequest" name="getRelationshipsRequest"></wsdl:input>
+<wsdl:output message="impl:getRelationshipsResponse" name="getRelationshipsResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationships" parameterOrder="in0">
+<wsdl:input message="impl:searchRelationshipsRequest" name="searchRelationshipsRequest"></wsdl:input>
+<wsdl:output message="impl:searchRelationshipsResponse" name="searchRelationshipsResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationshipCounts" parameterOrder="in0">
+<wsdl:input message="impl:searchRelationshipCountsRequest" name="searchRelationshipCountsRequest"></wsdl:input>
+<wsdl:output message="impl:searchRelationshipCountsResponse" name="searchRelationshipCountsResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putRelationships" parameterOrder="in0">
+<wsdl:input message="impl:putRelationshipsRequest" name="putRelationshipsRequest"></wsdl:input>
+<wsdl:output message="impl:putRelationshipsResponse" name="putRelationshipsResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteRelationships" parameterOrder="in0">
+<wsdl:input message="impl:deleteRelationshipsRequest" name="deleteRelationshipsRequest"></wsdl:input>
+<wsdl:output message="impl:deleteRelationshipsResponse" name="deleteRelationshipsResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationshipPathToRoot" parameterOrder="in0">
+<wsdl:input message="impl:getRelationshipPathToRootRequest" name="getRelationshipPathToRootRequest"></wsdl:input>
+<wsdl:output message="impl:getRelationshipPathToRootResponse" name="getRelationshipPathToRootResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationshipTasks" parameterOrder="in0">
+<wsdl:input message="impl:getRelationshipTasksRequest" name="getRelationshipTasksRequest"></wsdl:input>
+<wsdl:output message="impl:getRelationshipTasksResponse" name="getRelationshipTasksResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationshipTasks" parameterOrder="in0">
+<wsdl:input message="impl:searchRelationshipTasksRequest" name="searchRelationshipTasksRequest"></wsdl:input>
+<wsdl:output message="impl:searchRelationshipTasksResponse" name="searchRelationshipTasksResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="resolveRelationshipTasks" parameterOrder="in0">
+<wsdl:input message="impl:resolveRelationshipTasksRequest" name="resolveRelationshipTasksRequest"></wsdl:input>
+<wsdl:output message="impl:resolveRelationshipTasksResponse" name="resolveRelationshipTasksResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteRelationshipTasks" parameterOrder="in0">
+<wsdl:input message="impl:deleteRelationshipTasksRequest" name="deleteRelationshipTasksRequest"></wsdl:input>
+<wsdl:output message="impl:deleteRelationshipTasksResponse" name="deleteRelationshipTasksResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IdentityHubSoapBinding" type="impl:IdentityHubPort">
+<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="searchAndMatchFederated">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchAndMatchFederatedRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchAndMatchFederatedResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="matchMemberFederated">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="matchMemberFederatedRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="matchMemberFederatedResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchMemberFederated">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchMemberFederatedRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchMemberFederatedResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMemberFederated">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMemberFederatedRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMemberFederatedResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putMemberQual">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putMemberQualRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putMemberQualResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="matchMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="matchMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="matchMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="compareMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="compareMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="compareMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="deleteMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="deleteMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="undeleteMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="undeleteMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="undeleteMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="dropMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="dropMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="dropMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="mergeMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="mergeMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="mergeMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="unmergeMember">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="unmergeMemberRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="unmergeMemberResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="postItMemberNote">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="postItMemberNoteRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="postItMemberNoteResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="scoreMembers">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="scoreMembersRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="scoreMembersResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getTask">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getTaskRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getTaskResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchTask">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchTaskRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchTaskResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putTask">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putTaskRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putTaskResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getEia">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEiaRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEiaResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putEia">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putEiaRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putEiaResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchEia">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchEiaRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchEiaResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getDictionary">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getDictionaryRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getDictionaryResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putDictionary">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putDictionaryRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putDictionaryResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getSegmentDef">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getSegmentDefRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getSegmentDefResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getUserInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getUserInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getUserInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getGroupInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getGroupInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getGroupInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getApplicationInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getApplicationInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getApplicationInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getNetworkInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getNetworkInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getNetworkInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getEngineInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getEngineInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEngineInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putEngineInfo">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putEngineInfoRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putEngineInfoResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationships">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getRelationshipsRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getRelationshipsResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationships">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchRelationshipsRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchRelationshipsResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationshipCounts">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchRelationshipCountsRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchRelationshipCountsResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="putRelationships">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="putRelationshipsRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="putRelationshipsResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteRelationships">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="deleteRelationshipsRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="deleteRelationshipsResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationshipPathToRoot">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getRelationshipPathToRootRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getRelationshipPathToRootResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getRelationshipTasks">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="getRelationshipTasksRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="getRelationshipTasksResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="searchRelationshipTasks">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="searchRelationshipTasksRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="searchRelationshipTasksResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="resolveRelationshipTasks">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="resolveRelationshipTasksRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="resolveRelationshipTasksResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteRelationshipTasks">
+<wsdlsoap:operation soapAction=""/>
+<wsdl:input name="deleteRelationshipTasksRequest">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:input>
+<wsdl:output name="deleteRelationshipTasksResponse">
+<wsdlsoap:body namespace="urn:bean.initiate.com" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IdentityHubService">
+<wsdl:port binding="impl:IdentityHubSoapBinding" name="IdentityHub">
+<wsdlsoap:address location="https://qcimdswws801.ucsfmedicalcenter.org:9443/ibminitiatews/services/IdentityHub"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

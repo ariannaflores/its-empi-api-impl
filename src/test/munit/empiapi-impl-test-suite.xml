@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <munit:config name="munit" doc:name="MUnit configuration"/>
+    <context:property-placeholder location="file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/common_config.properties,file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/config.properties"/>
+    <spring:beans>
+        <spring:import resource="classpath:empiapi-impl.xml"/>
+    	<spring:import resource="classpath:global.xml"/>
+    </spring:beans>
+    <munit:test name="empiapi-impl-test-suite-its-empi-api-searchPatient-flowTest" description="search patient by last name, first name, dob, gender and minScore flow test" >
+        <mock:when messageProcessor="ws:consumer" doc:name="Mock">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['Call EMPI searchMember API']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/empisearchresponseall.xml').asString()]" mimeType="application/xml"/>
+        </mock:when>
+        <munit:set payload="#[]" doc:name="Set Message">
+            <munit:inbound-properties>
+                <munit:inbound-property key="http.request.path" value="#['/clinical/empi/1.0/patients']"/>
+                <munit:inbound-property key="http.listener.path" value="#['/clinical/empi/1.0/*']"/>
+                <munit:inbound-property key="http.query.params" value="#[{&quot;lastName&quot;:&quot;Sailor&quot;,&quot;firstName&quot;:&quot;Mars&quot;,&quot;dateOfBirth&quot;:&quot;2012-01-27&quot;,&quot;minScore&quot;:&quot;100&quot;}]"/>
+            </munit:inbound-properties>
+        </munit:set>
+        <flow-ref name="its-empi-api-searchPatient-flow" doc:name="its-empi-api-searchPatient-flow"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/json_2.json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+ payload.patients map (	
+	 $.enterpriseId		
+	
+)
+
+]]></dw:set-payload>
+        </dw:transform-message>
+        <munit:assert-payload-equals message="EMPI Search Patient API response is not matching" expectedValue="#[new java.util.ArrayList(Arrays.asList('7158','7158'))]" doc:name="Assert Payload"/>
+    </munit:test>
+    <munit:test name="empiapi-impl-test-suite-its-empi-api-getPatientByEnterpriseID-flowTest" description="getPatient by EID Flow unit test">
+        <mock:when messageProcessor="ws:consumer" doc:name="Mock getmember">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['Call EMPI getMember API']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/empigetmemberresponse.xml').asString()]" mimeType="application/xml"/>
+        </mock:when>
+        <mock:when messageProcessor="flow-ref" doc:name="Mock gethealthnetId">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['its-empi-api-getHealthNetId']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/gethealthnetIdsubflowresponse.json').asString()]" mimeType="application/json"/>
+        </mock:when>
+        <munit:set payload="#[]" doc:name="Set Message">
+            <munit:inbound-properties>
+                <munit:inbound-property key="http.listener.path" value="#['/clinical/empi/1.0/*']"/>
+                <munit:inbound-property key="http.request.path" value="#['/clinical/empi/1.0/patients/7158']"/>
+            </munit:inbound-properties>
+        </munit:set>
+        <flow-ref name="its-empi-api-getPatientByEnterpriseID-flow" doc:name="its-empi-api-getPatientByEnterpriseID-flow"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/json_2.json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+	 payload.lastName		
+	
+
+
+]]></dw:set-payload>
+        </dw:transform-message>
+        <munit:assert-payload-equals expectedValue="#['SAILOR']" doc:name="Assert Payload" message="getmemberbyEnterpriseID payload mismatch"/>
+    </munit:test>
+    <munit:test name="empiapi-impl-test-suite-its-empi-api-getPatientBySourceID-flowTest" description="getPatient by EID Flow unit test">
+        <mock:when messageProcessor="ws:consumer" doc:name="Mock getmember">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['Call EMPI getMember API']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/empigetmemberresponse.xml').asString()]" mimeType="application/xml"/>
+        </mock:when>
+        <mock:when messageProcessor="flow-ref" doc:name="Mock gethealthnetId">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['its-empi-api-getHealthNetId']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/gethealthnetIdsubflowresponse.json').asString()]" mimeType="application/json"/>
+        </mock:when>
+        <munit:set payload="#[]" doc:name="Set Message">
+            <munit:inbound-properties>
+                <munit:inbound-property key="http.listener.path" value="#['/clinical/empi/1.0/*']"/>
+                <munit:inbound-property key="http.request.path" value="#['/clinical/empi/1.0/patients/UCSF-91582321']"/>
+            </munit:inbound-properties>
+        </munit:set>
+        <set-variable variableName="source" value="#['UCSF']" doc:name="Variable source"/>
+        <set-variable variableName="sourceID" value="#[91582321]" doc:name="Variable sourceID"/>
+        <flow-ref name="its-empi-api-getPatientBySourceID-flow" doc:name="its-empi-api-getPatientBySourceID-flow"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/json_2.json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+	 payload.firstName		
+	
+
+
+]]></dw:set-payload>
+        </dw:transform-message>
+        <munit:assert-payload-equals expectedValue="#['MARS']" doc:name="Assert Payload" message="getmemberbySourceID payload mismatch"/>
+    </munit:test>
+    <munit:test name="empiapi-impl-test-suite-its-empi-api-getHealthNetIdTest" description="Test" >
+        <mock:when messageProcessor="ws:consumer" doc:name="Mock">
+            <mock:with-attributes>
+                <mock:with-attribute name="doc:name" whereValue="#['Call EMPI getMember HealthNet API']"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[getResource('samples/empigethealthplanresponse.xml').asString()]" mimeType="application/xml"/>
+        </mock:when>
+        <set-variable variableName="enterprise_id" value="#[7158]" doc:name="Variable"/>
+        <flow-ref name="its-empi-api-getHealthNetId" doc:name="Flow-ref to its-empi-api-getHealthNetId"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+ payload.memIdent[0].subscriberId	]]></dw:set-payload>
+        </dw:transform-message>
+        <munit:assert-payload-equals expectedValue="#['123456789F']" doc:name="Assert Payload"/>
+    </munit:test>
+</mule>

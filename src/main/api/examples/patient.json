@@ -1,0 +1,37 @@
+{
+  "enterpriseId": "7671",
+  "firstName": "TONY",
+  "lastName": "SOPRANO",
+  "middleName": "J",
+  "prefix": "",
+  "suffix": "",
+  "dateOfBirth": "1995-11-04",
+  "gender":"M",
+  "identifiers":[
+    {
+      "memIdnum": "TEST1",
+      "srcCode": "CANOPY"
+    },
+    {
+      "memIdnum": "34534343",
+      "srcCode": "UCSF"
+    }    
+  ],
+  "address": {
+    "streetLine1": "554 8TH AVE",
+    "streetLine2": "",
+    "city": "TEST CITY",
+    "state": "CA",
+    "zipCode": "941183715"
+  },
+  "phone": {
+    "phoneType": "Home",
+    "phoneNumber": "(510)222-3365"
+  },
+  "subscriberIds": [
+    { 
+      "plan": "HLTHNT",
+      "subscriberId": "R03268200"
+    }
+   ]  
+}

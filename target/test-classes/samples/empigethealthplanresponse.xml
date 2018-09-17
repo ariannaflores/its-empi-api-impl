@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<getMemberResponse xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="urn:bean.initiate.com">
+	<getMemberReturn xmlns="">
+		<item xsi:type="ns1:Member" xmlns:ns1="urn:bean.initiate.com">
+			<audHead xsi:nil="true" />
+			<compareInfo />
+			<entIque xsi:nil="true" />
+			<entLink xsi:nil="true" />
+			<entNote xsi:nil="true" />
+			<entOque xsi:nil="true" />
+			<entRule xsi:nil="true" />
+			<entXeia xsi:nil="true" />
+			<entXtsk xsi:nil="true" />
+			<memAddr xsi:nil="true" />
+			<memAppt xsi:nil="true" />
+			<memAttr xsi:nil="true" />
+			<memBktd xsi:nil="true" />
+			<memCmpd xsi:nil="true" />
+			<memCont xsi:nil="true" />
+			<memDate xsi:nil="true" />
+			<memDrug xsi:nil="true" />
+			<memElig xsi:nil="true" />
+			<memEnum xsi:nil="true" />
+			<memExta xsi:nil="true" />
+			<memExtb xsi:nil="true" />
+			<memExtc xsi:nil="true" />
+			<memExtd xsi:nil="true" />
+			<memExte xsi:nil="true" />
+			<memHead>
+				<rowInd>I</rowInd>
+				<entRecno>7158</entRecno>
+				<memIdnum>97581185</memIdnum>
+				<memRecno>7100</memRecno>
+				<srcCode>UCSF</srcCode>
+				<caudRecno>7400</caudRecno>
+				<entRecnos>
+					<item>7158</item>
+				</entRecnos>
+				<linkType>X</linkType>
+				<matchCode>Unknown</matchCode>
+				<matchScore>0</matchScore>
+				<maudRecno>10442</maudRecno>
+				<memSeqno>16</memSeqno>
+				<memStat>A</memStat>
+				<memVerno>3</memVerno>
+				<recCtime>2017-02-27 01:25:47 PM</recCtime>
+				<recMtime>2017-03-15 05:49:14 PM</recMtime>
+				<srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+				<srcLtime>2017-02-28 12:00:26 PM</srcLtime>
+				<srcRecno>18</srcRecno>
+			</memHead>
+			<memIdent>
+				<item>
+					<rowInd>I</rowInd>
+					<entRecno>7158</entRecno>
+					<memIdnum>97581185</memIdnum>
+					<memRecno>7100</memRecno>
+					<srcCode>UCSF</srcCode>
+					<asaIdxno>0</asaIdxno>
+					<attrCode>PATSSN</attrCode>
+					<attrName />
+					<attrRecno>6</attrRecno>
+					<caudRecno>7400</caudRecno>
+					<maudRecno>10442</maudRecno>
+					<memSeqno>8</memSeqno>
+					<recCtime>2017-02-27 01:25:47 PM</recCtime>
+					<recMtime>2017-03-15 05:49:14 PM</recMtime>
+					<recStat>A</recStat>
+					<srcFtime>2017-02-27 01:25:43 PM</srcFtime>
+					<srcLtime>2017-02-28 12:00:26 PM</srcLtime>
+					<idExpDate xsi:nil="true" />
+					<idIssuer>SSA</idIssuer>
+					<idNumber>888-88-8888</idNumber>
+					<idSrcRecno>3</idSrcRecno>
+				</item>
+			</memIdent>
+			<memIds xsi:nil="true" />
+			<memIque xsi:nil="true" />
+			<memLink xsi:nil="true" />
+			<memName xsi:nil="true" />
+			<memNote xsi:nil="true" />
+			<memOque xsi:nil="true" />
+			<memOref xsi:nil="true" />
+			<memPhone xsi:nil="true" />
+			<memQryd xsi:nil="true" />
+			<memRule xsi:nil="true" />
+			<memXeia xsi:nil="true" />
+			<memXtsk xsi:nil="true" />
+		</item>
+		<item xsi:type="ns2:Member" xmlns:ns2="urn:bean.initiate.com">
+			<audHead xsi:nil="true" />
+			<compareInfo />
+			<entIque xsi:nil="true" />
+			<entLink xsi:nil="true" />
+			<entNote xsi:nil="true" />
+			<entOque xsi:nil="true" />
+			<entRule xsi:nil="true" />
+			<entXeia xsi:nil="true" />
+			<entXtsk xsi:nil="true" />
+			<memAddr xsi:nil="true" />
+			<memAppt xsi:nil="true" />
+			<memAttr xsi:nil="true" />
+			<memBktd xsi:nil="true" />
+			<memCmpd xsi:nil="true" />
+			<memCont xsi:nil="true" />
+			<memDate xsi:nil="true" />
+			<memDrug xsi:nil="true" />
+			<memElig xsi:nil="true" />
+			<memEnum xsi:nil="true" />
+			<memExta xsi:nil="true" />
+			<memExtb xsi:nil="true" />
+			<memExtc xsi:nil="true" />
+			<memExtd xsi:nil="true" />
+			<memExte xsi:nil="true" />
+			<memHead>
+				<rowInd>I</rowInd>
+				<entRecno>7158</entRecno>
+				<memIdnum>9501050</memIdnum>
+				<memRecno>7090</memRecno>
+				<srcCode>BCHO</srcCode>
+				<caudRecno>7334</caudRecno>
+				<entRecnos>
+					<item>7158</item>
+				</entRecnos>
+				<linkType>X</linkType>
+				<matchCode>Unknown</matchCode>
+				<matchScore>0</matchScore>
+				<maudRecno>26695</maudRecno>
+				<memSeqno>38</memSeqno>
+				<memStat>A</memStat>
+				<memVerno>22</memVerno>
+				<recCtime>2017-02-27 08:19:40 AM</recCtime>
+				<recMtime>2017-07-11 10:18:19 AM</recMtime>
+				<srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+				<srcLtime>2017-07-11 10:18:18 AM</srcLtime>
+				<srcRecno>26</srcRecno>
+			</memHead>
+			<memIdent>
+				<item>
+					<rowInd>I</rowInd>
+					<entRecno>7158</entRecno>
+					<memIdnum>9501050</memIdnum>
+					<memRecno>7090</memRecno>
+					<srcCode>BCHO</srcCode>
+					<asaIdxno>0</asaIdxno>
+					<attrCode>PATSSN</attrCode>
+					<attrName />
+					<attrRecno>6</attrRecno>
+					<caudRecno>7334</caudRecno>
+					<maudRecno>26695</maudRecno>
+					<memSeqno>13</memSeqno>
+					<recCtime>2017-02-27 08:19:40 AM</recCtime>
+					<recMtime>2017-07-11 10:18:19 AM</recMtime>
+					<recStat>A</recStat>
+					<srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+					<srcLtime>2017-07-11 10:18:18 AM</srcLtime>
+					<idExpDate xsi:nil="true" />
+					<idIssuer>SSA</idIssuer>
+					<idNumber>888-88-8888</idNumber>
+					<idSrcRecno>3</idSrcRecno>
+				</item>
+				<item>
+					<rowInd>I</rowInd>
+					<entRecno>7158</entRecno>
+					<memIdnum>9501050</memIdnum>
+					<memRecno>7090</memRecno>
+					<srcCode>HEALTHNET</srcCode>
+					<asaIdxno>0</asaIdxno>
+					<attrCode>PATSUBID</attrCode>
+					<attrName />
+					<attrRecno>107</attrRecno>
+					<caudRecno>7334</caudRecno>
+					<maudRecno>26695</maudRecno>
+					<memSeqno>14</memSeqno>
+					<recCtime>2017-02-27 08:19:40 AM</recCtime>
+					<recMtime>2017-07-11 10:18:19 AM</recMtime>
+					<recStat>A</recStat>
+					<srcFtime>2017-02-27 08:19:34 AM</srcFtime>
+					<srcLtime>2017-07-11 10:18:18 AM</srcLtime>
+					<idExpDate xsi:nil="true" />
+					<idIssuer>HLTHNT</idIssuer>
+					<idNumber>123456789F</idNumber>
+					<idSrcRecno>30</idSrcRecno>
+				</item>
+			</memIdent>
+			<memIds xsi:nil="true" />
+			<memIque xsi:nil="true" />
+			<memLink xsi:nil="true" />
+			<memName xsi:nil="true" />
+			<memNote xsi:nil="true" />
+			<memOque xsi:nil="true" />
+			<memOref xsi:nil="true" />
+			<memPhone xsi:nil="true" />
+			<memQryd xsi:nil="true" />
+			<memRule xsi:nil="true" />
+			<memXeia xsi:nil="true" />
+			<memXtsk xsi:nil="true" />
+		</item>
+	</getMemberReturn>
+</getMemberResponse>

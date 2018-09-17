@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+   
+	<ws:consumer-config name="Web_Service_Consumer_EMPI" service="IdentityHubService" port="IdentityHub" serviceAddress="${empi.soapws.endpoint}" connectorConfig="HTTP_Request_Configuration" wsdlLocation="IBMInitiateWebservice.wsdl" doc:name="Web Service Consumer"/>
+    <http:request-config name="HTTP_Request_Configuration" protocol="HTTPS"    doc:name="HTTP Request Configuration" responseTimeout="120000"/>
+    <sub-flow name="its-empi-api-getmember-subflow">
+        <ws:consumer config-ref="Web_Service_Consumer_EMPI" operation="getMember" doc:name="Call EMPI getMember API"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml skipNullOn="everywhere"
+---
+payload
+]]></dw:set-payload>
+            <dw:set-variable variableName="enterprise_id"><![CDATA[%dw 1.0
+%output application/java
+%namespace urn bean.initiate.com
+---
+
+payload.getMemberResponse.getMemberReturn.item.memHead.entRecno
+ when  (flowVars.enterprise_id == null or (sizeOf flowVars.enterprise_id as :string) == 0) 
+ otherwise flowVars.enterprise_id	]]></dw:set-variable>
+        </dw:transform-message>
+        <logger message="#['IBM Initiate getMember output : ' + message.payloadAs(java.lang.String)]" level="DEBUG" doc:name="Logger"/>
+        <enricher target="#[flowVars.healthNetId]" doc:name="Message Enricher">
+            <flow-ref name="its-empi-api-getHealthNetId" doc:name="its-empi-api-getHealthNetId"/>
+        </enricher>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/getMemberReturn.xml"/>
+            <dw:input-variable doc:sample="sample_data/json.json" variableName="healthNetId"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/xml
+%output application/json
+%namespace urn bean.initiate.com
+%var members=payload.getMemberResponse.getMemberReturn.*item
+%function formatDate(inputDate)(inputDate when (inputDate contains "-") otherwise (inputDate as :date {format: "yyyyMMdd"}) as :string {format: "yyyy-MM-dd"})
+%function combineKeyValue(item) (item.fldNames.*item  map (fld, indexOfFld) -> '$fld':item.values[indexOfFld] as :string)
+---
+{
+	enterpriseId: members[0].memHead.entRecno,
+	(members.memName.*item filter ($.attrCode == 'PATNAME' and $.recStat == 'A') map (memName, indexOfmemName) -> {
+		firstName: memName.onmFirst,
+  		lastName: memName.onmLast,
+  		middleName: memName.onmMiddle,
+  		prefix: memName.onmPrefix,
+  		suffix: memName.onmSuffix
+	}),
+	(members.memDate.*item filter ($.attrCode == 'PATBIRTHDT' and $.recStat == 'A') map (memDate, indexOfmemDate) -> {
+		dateOfBirth: formatDate(memDate.dateVal)
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'PATGENDER' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		gender: memAttr.attrVal
+	}),
+	identifiers:  members.memHead filter ($.memStat == 'A') map (memHead, indexOfmemHead) -> {
+		memIdnum: memHead.memIdnum,
+		srcCode: memHead.srcCode
+	},
+	address: {
+		(members.memAddr.*item default [] filter ($.attrCode == 'PATADDRESS' and $.recStat == 'A') map (memAddr, indexOfmemAddr) -> {
+			streetLine1: memAddr.stLine1,
+  			streetLine2: memAddr.stLine2,
+  			city: memAddr.city,
+  			state: memAddr.state,
+  			zipCode: memAddr.zipCode
+		})
+	},
+	phone:  
+		members.memPhone.*item default [] filter (($.attrCode == 'PATHOMEPHONE' or $.attrCode == 'PATCELLPHONE') and $.recStat == 'A') map (memPhone, indexOfmemPhone) -> {
+		(phoneType:"Home") when memPhone.attrCode == 'PATHOMEPHONE',
+		(phoneType:"Cell") when memPhone.attrCode == 'PATCELLPHONE', 
+		 phoneNumber:memPhone.phNumber
+		
+	},
+	(members.memAttr.*item filter ($.attrCode == 'PRIMRYEMAIL' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		primaryEmail: memAttr.attrVal
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'SECNDEMAIL' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		secondaryEmail: memAttr.attrVal
+	}),
+	(members.memIds.*item default [] filter ($.attrCode == 'PCPINFO' and $.recStat == 'A') map (memPCP, indexOfmemPCP) -> {
+		pcp:  using (memPCPInfo = combineKeyValue(memPCP) reduce ($$ ++ $)){
+			firstName: memPCPInfo.pcpprovfirstname,
+			lastName: memPCPInfo.pcpprovlastname,
+			fullName: memPCPInfo.pcpprovfullname,
+			npi: memPCPInfo.pcpprovnpi,
+			(members.memPhone.*item default [] filter (($.attrCode == 'PCPPHONE') and $.recStat == 'A') map (memPhone, indexOfmemPhone) -> {
+				 phone: memPhone.phNumber
+		
+			}),
+			clinicName: memPCPInfo.pcpclinicdesc,
+			clinicOrganization: {
+				id: memPCPInfo.pcpclinicorgid,
+				type: memPCPInfo.pcpclinicorgidtype,
+				desc: memPCPInfo.pcpclinicorgdesc
+			},
+			(members.memDate.*item filter ($.attrCode == 'PCPEFFDATE' and $.recStat == 'A') map (memDate, indexOfmemDate) -> {
+				effectiveDate: formatDate(memDate.dateVal)
+			})			
+		}	
+	}),
+	(members.memIds.*item default [] filter ($.attrCode == 'SUBINFO' and $.recStat == 'A') map (memSubscrb, indexOfmemSubscrb) -> {
+		subscriber:  using (memSubscrbInfo = combineKeyValue(memSubscrb) reduce ($$ ++ $)){
+			(members.memAttr.*item filter ($.attrCode == 'SUBNUM' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+				subscriberId: memAttr.attrVal
+			}),
+			firstName: memSubscrbInfo.subfirstname,
+			lastName: memSubscrbInfo.sublastname,
+			middleName: memSubscrbInfo.submiddlein,
+			familyCoverage: {
+				tier: memSubscrbInfo.subfamilycoverage,
+				tierDesc: memSubscrbInfo.subfamilycoveragedesc
+			}			
+		}	
+	}),
+	(members.memIds.*item default [] filter ($.attrCode == 'HLTHPLN' and $.recStat == 'A') map (memHlthpln, indexOfmemHlthpln) -> {
+			healthPlan:  using (hlthpln = combineKeyValue(memHlthpln) reduce ($$ ++ $)){
+				code: hlthpln.hlthplncode,
+				desc: hlthpln.hlthplndesc,
+				type: hlthpln.hlthplntyp,
+				(members.memIds.*item default [] filter ($.attrCode == 'MBRMONTH' and $.recStat == 'A') map (memMonth, indexOfmemMonth) -> {
+					(using (memberMonth = combineKeyValue(memMonth) reduce ($$ ++ $)){
+						monthActive: memberMonth.mbrmthactive
+					})	
+				}),
+				(members.memIds.*item default [] filter ($.attrCode == 'HLTHPLNGRP' and $.recStat == 'A') map (memHlthplnGrp, indexOfmemHlthplnGrp) -> {
+					group: using (hlthplnGrp = combineKeyValue(memHlthplnGrp) reduce ($$ ++ $)) {
+						id:hlthplnGrp.hlthplngrpplcyid,
+						(members.memIds.*item default [] filter ($.attrCode == 'HLTHPLNREL' and $.recStat == 'A') map (memHlthplnGrpName, indexOfmemHlthplnGrpName) -> {
+							  (using (hlthplnGrpName = combineKeyValue(memHlthplnGrpName) reduce ($$ ++ $)){
+								name: hlthplnGrpName.hlthplngrpname
+							  })	
+						})
+					}
+				}),
+				coverageType: {
+					code: hlthpln.cvgtypcode,
+					desc: hlthpln.cvgtypdesc
+				}
+			}		
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'MBRREFID' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		memberReferenceId: memAttr.attrVal
+	}),
+	(members.memIds.*item default [] filter ($.attrCode == 'HLTHPLNREL' and $.recStat == 'A') map (memHlthplnRel, indexOfmemHlthplnRel) -> {
+		relationship:  using (hlthplnRel = combineKeyValue(memHlthplnRel) reduce ($$ ++ $)){
+			code: hlthplnRel.relationcode,
+			desc: hlthplnRel.relationdesc
+		}	
+	}),
+	(members.memDate.*item filter ($.attrCode == 'RERATEMON' and $.recStat == 'A') map (memDate, indexOfmemDate) -> {
+		rerateMonth: formatDate(memDate.dateVal)
+	}),
+	(members.memIds.*item default [] filter ($.attrCode == 'PHARMINFO' and $.recStat == 'A') map (memPharm, indexOfmemPharm) -> {
+		pharmacyInfo:  using (memPharmInfo = combineKeyValue(memPharm) reduce ($$ ++ $)){
+			RxBIN: memPharmInfo.rxbin,
+			RxPCN: memPharmInfo.rxpcn,
+			RxGroup: memPharmInfo.rxgroup
+		}	
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'ACOORGNAME' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		IPAName: memAttr.attrVal
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'NETID' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		networkId: memAttr.attrVal
+	}),
+	(members.memAttr.*item filter ($.attrCode == 'EDIPAYORID' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+		EDIPayorId: memAttr.attrVal
+	})
+}]]></dw:set-payload>
+        </dw:transform-message>
+    </sub-flow>
+    <flow name="its-empi-api-searchPatient-flow">
+        <message-filter doc:name="Message" onUnaccepted="its-empiapi-impl-report-param-issue">
+                <or-filter>
+                    <and-filter>
+                        <expression-filter expression="#[message.inboundProperties.'http.query.params'.dateOfBirth != null]"/>
+                        <expression-filter expression="#[message.inboundProperties.'http.query.params'.lastName != null]"/>
+                        <expression-filter expression="#[message.inboundProperties.'http.query.params'.firstName != null]"/>
+                    </and-filter>
+                    <expression-filter expression="#[message.inboundProperties.'http.query.params'.subscriberId != null]"/>
+                </or-filter>
+        </message-filter>
+        <set-variable variableName="requestedPath" value="#[message.inboundProperties['http.request.path'].substring(message.inboundProperties['http.listener.path'].length()-2)]" doc:name="Variable requestedPath"/>
+        <logger message="#['Request received : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+        <choice doc:name="Choice">
+            <when expression="#[message.inboundProperties.'http.query.params'.subscriberId != null]">
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace urn urn:bean.initiate.com
+---
+urn#searchMember:{
+	urn#in0:{
+		userName:"${empi.soapws.username}",
+		userPassword:"${empi.soapws.password}",
+		entType:"patient",
+		getType:"ASENTITY",
+		memStatFilter:"A",
+		segCodeFilter:"MEMHEAD,MEMATTRALL",
+		srcCodeFilter: "HEALTHNET",
+		minScore:inboundProperties.'http.query.params'.minScore when inboundProperties.'http.query.params'.minScore != '' otherwise 0, 
+		member: {
+			(memAttr: {
+				item: {
+					attrCode:"SUBNUM",
+					attrVal: inboundProperties.'http.query.params'.subscriberId
+				}
+			}) when inboundProperties.'http.query.params'.subscriberId != '',
+			memHead:{
+				memIdnum:0,
+				srcCode:"HEALTHNET"
+			}
+		}
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </when>
+            <otherwise>
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace urn urn:bean.initiate.com
+---
+urn#searchMember:{
+	urn#in0:{
+		userName:"${empi.soapws.username}",
+		userPassword:"${empi.soapws.password}",
+		entType:"patient",
+		getType:"ASENTITY",
+		memStatFilter:"A",
+		segCodeFilter:"MEMHEAD,MEMATTRALL",
+		minScore:inboundProperties.'http.query.params'.minScore when inboundProperties.'http.query.params'.minScore != '' otherwise 0, 
+		member: {
+			memDate:{
+				item: {
+					attrCode:"PATBIRTHDT",
+					dateVal:inboundProperties.'http.query.params'.dateOfBirth
+				}
+			},
+			memName:{
+				item: {
+					attrCode:"PATNAME",
+					onmLast: inboundProperties.'http.query.params'.lastName,
+					onmFirst:inboundProperties.'http.query.params'.firstName,
+					onmMiddle:inboundProperties.'http.query.params'.middleName
+				}
+			},
+			(memAttr: {
+				item: {
+					attrCode:"PATGENDER",
+					attrVal: inboundProperties.'http.query.params'.gender
+				}
+			}) when inboundProperties.'http.query.params'.gender != '',
+			(memAddr: {
+				item: {
+					attrCode:"PATADDRESS",
+					stLine1: inboundProperties.'http.query.params'.addressLine1,
+					(
+						stLine2: inboundProperties.'http.query.params'.addressLine2
+					) when inboundProperties.'http.query.params'.addressLine2 != '',
+					(
+						city: inboundProperties.'http.query.params'.city
+					) when inboundProperties.'http.query.params'.city != '',
+					(
+						state: inboundProperties.'http.query.params'.state
+					) when inboundProperties.'http.query.params'.state != '',
+					(
+						zipCode: inboundProperties.'http.query.params'.zipCode						
+					) when inboundProperties.'http.query.params'.zipCode != ''
+				}
+			}) when inboundProperties.'http.query.params'.addressLine1 != '',
+			(memPhone: {
+				(item: {
+					attrCode: "PATHOMEPHONE",
+					phNumber: inboundProperties.'http.query.params'.homePhone
+				}) when inboundProperties.'http.query.params'.homePhone != '',
+				(item: {
+					attrCode: "PATOTHRPH",
+					phNumber: inboundProperties.'http.query.params'.workPhone
+				}) when inboundProperties.'http.query.params'.workPhone != '',
+				(item: {
+					attrCode: "PATCELLPHONE",
+					phNumber: inboundProperties.'http.query.params'.mobilePhone
+				}) when inboundProperties.'http.query.params'.mobilePhone != ''				
+			}) when (inboundProperties.'http.query.params'.homePhone != '' or 
+				     inboundProperties.'http.query.params'.workPhone != '' or
+				     inboundProperties.'http.query.params'.mobilePhone != ''),
+			memHead:{
+				memIdnum:0,
+				srcCode:"HEALTHNET"
+			}
+		}
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </otherwise>
+        </choice>
+        <ws:consumer config-ref="Web_Service_Consumer_EMPI" doc:name="Call EMPI searchMember API" operation="searchMember"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml skipNullOn="everywhere"
+---
+payload
+]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="#['IBM Initiate searchMember output : ' + message.payloadAs(java.lang.String)]" level="DEBUG" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/searchMemberReturn.xml"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/xml
+%output application/json
+%namespace urn bean.initiate.com
+%function formatDate(inputDate)(inputDate when (inputDate contains "-") otherwise (inputDate as :date {format: "yyyyMMdd"}) as :string {format: "yyyy-MM-dd"})
+%function combineKeyValue(item) (item.fldNames.*item  map (fld, indexOfFld) -> '$fld':item.values[indexOfFld] as :string)
+---
+{
+	patients: payload.searchMemberResponse.searchMemberReturn.*item map ((item , indexOfItem) -> {
+		enterpriseId: item.memHead.entRecno,
+		memIdnum: item.memHead.memIdnum,
+		srcCode: item.memHead.srcCode,
+		matchScore: item.memHead.matchScore,
+		((item.memName.*item default []) filter ($ != '' and $.attrCode == 'PATNAME' and $.recStat == 'A') map (memName, indexOfmemName) -> {
+			firstName: memName.onmFirst,
+			lastName: memName.onmLast,
+			(middleName: memName.onmMiddle) when (sizeOf memName.onmMiddle) > 0,
+			(prefix: memName.onmPrefix) when (sizeOf memName.onmPrefix) > 0,
+			(suffix: memName.onmSuffix) when (sizeOf memName.onmSuffix) > 0
+		}),
+		((item.memDate.*item default []) filter ($ != '' and $.attrCode == 'PATBIRTHDT' and $.recStat == 'A') map (memDate, indexOfmemDate) -> {
+			dateOfBirth: formatDate(memDate.dateVal)
+		}),
+		((item.memAttr.*item default []) filter ($ != '' and $.attrCode == 'PATGENDER' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+			gender: memAttr.attrVal
+		}),
+		((item.memAttr.*item default []) filter ($ != '' and $.attrCode == 'SUBNUM' and $.recStat == 'A') map (memAttr, indexOfmemAttr) -> {
+			subscriberId: memAttr.attrVal
+		})
+
+	})
+
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger level="DEBUG" doc:name="Logger" message="#['searchPatient output : ' + payload]"/>
+        <logger message="#['Request completed : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+        <exception-strategy ref="global_Choice_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="its-empi-api-getPatientByEnterpriseID-flow">
+        <set-variable variableName="requestedPath" value="#[message.inboundProperties['http.request.path'].substring(message.inboundProperties['http.listener.path'].length()-2)]" doc:name="Variable requestedPath"/>
+        <logger message="#['Request received : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+            <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace urn urn:bean.initiate.com
+---
+urn#getMember:{
+	in0:{
+		userName:"${empi.soapws.username}",
+		userPassword:"${empi.soapws.password}",
+		cvwName:"EMCA",
+		entType:"patient",
+		getType:"ASENTITY",
+		entRecno:flowVars.enterprise_id,
+		memStatFilter:"A",
+		segCodeFilter:"MEMHEAD,MEMATTRALL"
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <flow-ref name="its-empi-api-getmember-subflow" doc:name="its-empi-api-getmember-subflow"/>
+        <logger level="DEBUG" doc:name="Logger" message="#['getPatient by Enterprise output : ' + message.payload]"/>
+        <logger message="#['Request completed : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+        <exception-strategy ref="global_Choice_Exception_Strategy" doc:name="Reference Exception Strategy"/>   
+    </flow>
+    <flow name="its-empi-api-getPatientBySourceID-flow">
+        <set-variable variableName="requestedPath" value="#[message.inboundProperties['http.request.path'].substring(message.inboundProperties['http.listener.path'].length()-2)]" doc:name="Variable requestedPath"/>
+        <logger message="#['Request received : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+            <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace urn urn:bean.initiate.com
+---
+urn#getMember:{
+	in0:{
+		userName:"${empi.soapws.username}",
+		userPassword:"${empi.soapws.password}",
+		cvwName:"EMCA",
+		entType:"patient",
+		getType:"ASENTITY",
+		memIdnums:{
+			item: flowVars.source_id
+		},
+		memStatFilter:"A",
+		segCodeFilter:"MEMHEAD,MEMATTRALL",
+		srcCodes: {
+			item: flowVars.source
+		}
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <flow-ref name="its-empi-api-getmember-subflow" doc:name="its-empi-api-getmember-subflow"/>
+        <logger level="DEBUG" doc:name="Logger" message="#['getPatient By SourceID output : ' + message.payload]"/>
+        <logger message="#['Request completed : ' + flowVars.requestedPath]" level="INFO" doc:name="Logger"/>
+        <exception-strategy ref="global_Choice_Exception_Strategy" doc:name="Reference Exception Strategy"/>   
+
+
+    
+    </flow>
+    <flow name="its-empi-api-getHealthNetId">
+        <logger message="#['getHealthNetID flow started']" level="DEBUG" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace urn urn:bean.initiate.com
+---
+urn#getMember:{
+	in0:{
+		userName:"${empi.soapws.username}",
+		userPassword:"${empi.soapws.password}",
+		cvwName:"MMCA",
+		entType:"patient",
+		getType:"ASENTITY",
+		entRecno:flowVars.enterprise_id,
+		memStatFilter:"A",
+		segCodeFilter:"MEMHEAD,MEMIDENT"
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <ws:consumer config-ref="Web_Service_Consumer_EMPI" operation="getMember" doc:name="Call EMPI getMember HealthNet API"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:input-payload doc:sample="sample_data/getMemberReturn_4.xml"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+%var members=payload.getMemberResponse.getMemberReturn.*item
+---
+{
+	memIdent: members.memIdent.*item default [] filter ($.attrCode == 'PATSUBID' and $.srcCode == 'HEALTHNET') map {
+		plan: $.idIssuer,
+		subscriberId: $.idNumber	
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="#['getHealthNetID flow completed']" level="DEBUG" doc:name="Logger"/>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <set-payload value="#['{&quot;memIdent&quot;: &quot;&quot; }']" doc:name="Set Payload"/>
+            <logger message="#['getHealthNetID flow completed with an exception']" level="DEBUG" doc:name="Logger"/>
+        </catch-exception-strategy>
+    </flow>
+        <sub-flow name="its-empiapi-impl-report-param-issue">
+        <set-property propertyName="http.status" value="#[400]" doc:name="Property http.status"/>
+         <set-property propertyName="Content-Type" value="application/json" doc:name="Property Content-Type" />
+            <set-payload value="{&quot;error&quot;: {&quot;code&quot;:400,&quot;message&quot;: &quot; query parameters 'lastName', 'firstName', and 'dateOfBirth' are required if 'subscriberId' is not included. Please check API specs for additional details. &quot;}}" doc:name="Set Payload error" />
+    </sub-flow>
+</mule>

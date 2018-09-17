@@ -1,0 +1,103 @@
+#%RAML 0.8
+title: EMPI
+version: 1.0
+baseUri: https://unified-api.ucsf.edu/clinical/empi/{version}
+traits:
+  - headers-request:
+      headers:
+        client_id:
+          type: string
+          required: true
+        client_secret:
+          type: string
+          required: true
+        Accept:
+          type: string
+          required: false
+          default: application/json
+          example: application/json
+/patients:
+  get:
+    is: [headers-request]
+    description: Search MDM based on input parameters (lastName, firstName, middleName, gender and dateOfBirth, or subscriberId). If subscriberId is included then all other fields are ignored, otherwise lastName, firstName and dateOfBirth are required.
+    queryParameters:
+      lastName:
+        required: false
+        type: string
+      firstName:
+        required: false
+        type: string
+      middleName:
+        required: false
+        type: string
+      gender:
+        description: M-Male,F-Female,U-Unknown
+        required: false
+        type: string
+        enum: ["M","F","U"]
+      dateOfBirth:
+        required: false
+        type: date
+        example: 2017-02-13
+      addressLine1:
+        required: false
+        type: string
+      addressLine2:
+        required: false
+        type: string      
+      addressCity:
+        required: false
+        type: string      
+      addressState:
+        required: false
+        type: string      
+      addressZip:
+        required: false
+        type: string      
+      homePhone:
+        required: false
+        type: string      
+      mobilePhone:
+        required: false
+        type: string      
+      workPhone:
+        required: false
+        type: string            
+      subscriberId:
+        description: If this field is included in the search then all other fields are ignored.
+        required: false
+        type: string  
+      minScore:
+        description: Only patient records with matching score greater than or equal to minScore are returned. Zero means any matching score is acceptable.
+        required: false
+        type: integer
+        example: 100
+                
+    responses:
+      200:
+        body: 
+          application/json:
+            example: !include examples/patients.json
+    
+  /{enterprise_id}:
+    uriParameters: 
+      enterprise_id:
+       description: The enterprise id of the patient.
+       type: integer
+    get:
+      is: [headers-request]
+      description: Get the details of a specific patient based on enterprise id from MDM
+      responses:
+        200:
+          body: 
+            application/json:
+              example: !include examples/patient.json
+  /{source}-{source_id}:
+    get:
+      is: [headers-request]
+      description: Get the details of a specific patient from MDM based on the source MRN. For example source can be UCSF or BCHO etc, and source_id is the MRN. 
+      responses:
+        200:
+          body: 
+            application/json:
+              example: !include examples/patient.json    

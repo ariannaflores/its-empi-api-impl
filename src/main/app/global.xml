@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:objectstore="http://www.mulesoft.org/schema/mule/objectstore"
+	xmlns:smtps="http://www.mulesoft.org/schema/mule/smtps" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/objectstore http://www.mulesoft.org/schema/mule/objectstore/current/mule-objectstore.xsd
+http://www.mulesoft.org/schema/mule/smtps http://www.mulesoft.org/schema/mule/smtps/current/mule-smtps.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+	<context:property-placeholder
+		location="file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/common_config.properties,file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/config.properties" />
+
+	<!-- Partitioned Object Store -->
+	<objectstore:config partition="expirable" name="errorObjectStore"
+		entryTtl="${mail.objectstore.entryttl}" expirationInterval="${mail.objectstore.expirationinterval}"
+		maxEntries="${mail.objectstore.maxentries}" doc:name="ObjectStore" />
+
+	<smtps:connector name="SMTP" doc:name="SMTP"
+		validateConnections="true">
+		<smtps:tls-client path="truststore.jks"
+			storePassword="test123" />
+		<smtps:tls-trust-store path="truststore.jks"
+			storePassword="test123" />
+	</smtps:connector>
+    <spring:beans>
+        <spring:bean id="logContext" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+            <spring:property name="targetClass">
+                <spring:value>org.apache.logging.log4j.LogManager</spring:value>
+            </spring:property>
+            <spring:property name="targetMethod">
+                <spring:value>getContext</spring:value>
+            </spring:property>
+            <spring:property name="arguments">
+                <spring:value>false</spring:value>
+            </spring:property>
+        </spring:bean>
+        <spring:bean id="logContext1" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+            <spring:property name="targetObject" ref="logContext"/>
+            <spring:property name="targetMethod">
+                <spring:value>setConfigLocation</spring:value>
+            </spring:property>
+            <spring:property name="arguments">
+                <spring:value>file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/log4j2.xml</spring:value>
+            </spring:property>
+        </spring:bean>
+        <spring:bean id="logContext2" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+            <spring:property name="targetObject" ref="logContext"/>
+            <spring:property name="targetMethod">
+                <spring:value>reconfigure</spring:value>
+            </spring:property>
+        </spring:bean>
+    </spring:beans>
+
+	<choice-exception-strategy name="global_Choice_Exception_Strategy">
+		<catch-exception-strategy doc:name="Catch Exception Strategy"
+			logException="false">
+			<set-property propertyName="Content-Type" value="application/json"
+				doc:name="Property" />
+			<set-variable variableName="errorMessage"
+				value="#[(exception.getCause() != null)?exception.getCause().toString():exception.getCauseException().toString()]" doc:name="Error messages" />
+			<choice doc:name="Choice">
+				<when
+					expression="#[(flowVars.errorMessage contains 'no member(s) found') || (flowVars.errorMessage contains 'none remain after being filtered') || (flowVars.errorMessage contains 'no candidates found') || (flowVars.errorMessage contains 'no buckets were generated from search input data')]">
+					<set-property propertyName="http.status" value="404"
+						doc:name="Property" />
+				</when>
+				<otherwise>
+                    <logger message="#[org.mule.util.ExceptionUtils.getFullStackTrace(exception)]" level="ERROR" doc:name="Logger"/>
+					<set-property propertyName="http.status" value="500"
+						doc:name="Property" />
+					<set-variable value="${smtp.mail.to.internal}"
+						variableName="mailTo" doc:name="Variable mailTo"></set-variable>
+					<set-variable variableName="mailText" value="#[flowVars.errorMessage]"
+						doc:name="Variable mailText" />
+					<set-variable variableName="mailSubject"
+						value="#[&quot;Error calling IBM Initiate (EMPI) webservice&quot;]"
+						doc:name="Variable mailSubject" />
+					<flow-ref name="duplicate-error-handling" doc:name="duplicate-error-handling" />
+				</otherwise>
+			</choice>
+			<dw:transform-message doc:name="Transform Message">
+				<dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	"message": flowVars.errorMessage
+}]]></dw:set-payload>
+			</dw:transform-message>
+		</catch-exception-strategy>
+	</choice-exception-strategy>
+
+	<sub-flow name="duplicate-error-handling">
+		<enricher target="#[flowVars.errorFound]" doc:name="Message Enricher">
+			<objectstore:contains config-ref="errorObjectStore"
+				key="#[exception]" doc:name="ObjectStore - Check if exists" />
+		</enricher>
+		<choice doc:name="Choice errorFound?">
+			<when expression="#[flowVars.errorFound == true]">
+				<logger level="INFO"
+					message="Error found in object store. Not sending email." doc:name="Logger Error" />
+			</when>
+			<otherwise>
+				<objectstore:store config-ref="errorObjectStore"
+					key="#[exception]" value-ref="#[exception]" doc:name="ObjectStore -  exception" />
+
+
+				<flow-ref name="handleErrorWithMail" doc:name="handleErrorWithMail" />
+			</otherwise>
+		</choice>
+	</sub-flow>
+
+
+	<sub-flow name="handleErrorWithMail">
+
+		<enricher doc:name="Message Enricher" target="dummy">
+			<flow-ref name="sendMailFlow" doc:name="sendMailFlow" />
+		</enricher>
+
+	</sub-flow>
+	<sub-flow name="sendMailFlow">
+		<logger message="Sending Email #[flowVars.?mailSubject]" level="INFO"
+			doc:name="Logger" />
+		<set-payload
+			value="#[flowVars.?mailText] . Please check Mule Logs for more info."
+			doc:name="Set Payload" />
+		<set-variable variableName="mailSubject"
+			value="Env ${env}: EMPI API IMPL:  #[flowVars.?mailSubject]"
+			doc:name="subject variable" />
+
+		<smtps:outbound-endpoint host="${smtp.host}"
+			port="${smtp.port}" user="${smtp.user}" password="${smtp.password}"
+			connector-ref="SMTP" to="#[flowVars.?mailTo]" from="${smtp.mail.from}"
+			subject="#[flowVars.?mailSubject]" responseTimeout="10000" doc:name="SMTP" />
+	</sub-flow>
+
+</mule>

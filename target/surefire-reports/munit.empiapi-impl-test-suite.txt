@@ -1,0 +1,8 @@
+SUCCESS - Test empiapi-impl-test-suite-its-empi-api-getHealthNetIdTest finished Successfully.
+SUCCESS - Test empiapi-impl-test-suite-its-empi-api-searchPatient-flowTest finished Successfully.
+SUCCESS - Test empiapi-impl-test-suite-its-empi-api-getPatientBySourceID-flowTest finished Successfully.
+SUCCESS - Test empiapi-impl-test-suite-its-empi-api-getPatientByEnterpriseID-flowTest finished Successfully.
+
+=============================================================================
+Tests run: 4 - Failures: 0 - Errors: 0 - Skipped: 0 - Time elapsed: 3.417 sec
+=============================================================================

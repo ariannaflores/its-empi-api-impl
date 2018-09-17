@@ -1,0 +1,1277 @@
+<?xml version='1.0' encoding='UTF-8'?>
+      <getMemberResponse xmlns="urn:bean.initiate.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <getMemberReturn xmlns="">
+            <item xsi:type="ns1:Member" xmlns:ns1="urn:bean.initiate.com">
+               <audHead xsi:nil="true"/>
+               <compareInfo/>
+               <entIque xsi:nil="true"/>
+               <entLink xsi:nil="true"/>
+               <entNote xsi:nil="true"/>
+               <entOque xsi:nil="true"/>
+               <entRule xsi:nil="true"/>
+               <entXeia xsi:nil="true"/>
+               <entXtsk xsi:nil="true"/>
+               <memAddr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATADDRESS</attrCode>
+                     <attrName/>
+                     <attrRecno>2</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>1</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <city>EMERYVILLE</city>
+                     <country/>
+                     <geoCode1/>
+                     <geoCode2/>
+                     <geoText1/>
+                     <stLine1>6475 CHRISTIE AVENUE</stLine1>
+                     <stLine2>SUITE 560</stLine2>
+                     <stLine3/>
+                     <stLine4/>
+                     <state>CA</state>
+                     <zipCode>94553</zipCode>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MAILADDRESS</attrCode>
+                     <attrName/>
+                     <attrRecno>71</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>2</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <city/>
+                     <country/>
+                     <geoCode1/>
+                     <geoCode2/>
+                     <geoText1/>
+                     <stLine1/>
+                     <stLine2/>
+                     <stLine3/>
+                     <stLine4/>
+                     <state/>
+                     <zipCode/>
+                  </item>
+               </memAddr>
+               <memAppt xsi:nil="true"/>
+               <memAttr>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATGENDER</attrCode>
+                     <attrName/>
+                     <attrRecno>9</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>4</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>F</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATDEATHIND</attrCode>
+                     <attrName/>
+                     <attrRecno>10</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>3</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>N</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLANGUAGE</attrCode>
+                     <attrName/>
+                     <attrRecno>45</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>5</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>ENG</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>ACOORGNAME</attrCode>
+                     <attrName/>
+                     <attrRecno>75</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>6</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>CANOPY HEALTH - JOHN MUIR PHYSICIAN NETWORK</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>ALTMEMID1TYP</attrCode>
+                     <attrName/>
+                     <attrRecno>77</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>7</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>SSN</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>WRITLNG</attrCode>
+                     <attrName/>
+                     <attrRecno>88</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>8</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>ENG</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>OFFVSTCOPAY</attrCode>
+                     <attrName/>
+                     <attrRecno>89</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>9</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>20</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>DMECOPAY</attrCode>
+                     <attrName/>
+                     <attrRecno>90</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>10</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>YES</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>ERCOPAY</attrCode>
+                     <attrName/>
+                     <attrRecno>91</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>11</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>75</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PRODCODE</attrCode>
+                     <attrName/>
+                     <attrRecno>93</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>12</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>UCH</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>FUNDTYP</attrCode>
+                     <attrName/>
+                     <attrRecno>94</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>13</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>R</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>INSGHTINDCTR</attrCode>
+                     <attrName/>
+                     <attrRecno>95</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>14</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>N</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>RXINDCTR</attrCode>
+                     <attrName/>
+                     <attrRecno>96</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>15</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>Y</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MBRREFID</attrCode>
+                     <attrName/>
+                     <attrRecno>97</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>16</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>R12345678</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PRIMRYEMAIL</attrCode>
+                     <attrName/>
+                     <attrRecno>98</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>17</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>PRIMARYEMAIL@CANOPYHEALTH.COM</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>SECNDEMAIL</attrCode>
+                     <attrName/>
+                     <attrRecno>99</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>18</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>SECONDARYEMAIL@CANOPYHEALTH.COM</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>NETID</attrCode>
+                     <attrName/>
+                     <attrRecno>142</attrRecno>
+                     <caudRecno>107483</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>43</memSeqno>
+                     <recCtime>2018-06-27 10:30:00 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-27 10:30:00 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>AAAAAAAAAA</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>EDIPAYORID</attrCode>
+                     <attrName/>
+                     <attrRecno>143</attrRecno>
+                     <caudRecno>107483</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>44</memSeqno>
+                     <recCtime>2018-06-27 10:30:00 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-27 10:30:00 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>12345678901</attrVal>
+                     <elemDesc/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>SUBNUM</attrCode>
+                     <attrName/>
+                     <attrRecno>144</attrRecno>
+                     <caudRecno>107670</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>47</memSeqno>
+                     <recCtime>2018-06-29 02:40:05 PM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-29 02:40:05 PM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <attrVal>R12345678FM1</attrVal>
+                     <elemDesc/>
+                  </item>
+               </memAttr>
+               <memBktd xsi:nil="true"/>
+               <memCmpd xsi:nil="true"/>
+               <memCont xsi:nil="true"/>
+               <memDate>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATBIRTHDT</attrCode>
+                     <attrName/>
+                     <attrRecno>8</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>19</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal>19991231</dateVal>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATLSTACTDT</attrCode>
+                     <attrName/>
+                     <attrRecno>14</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>21</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATDEATHDT</attrCode>
+                     <attrName/>
+                     <attrRecno>40</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>20</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>RUNDATE</attrCode>
+                     <attrName/>
+                     <attrRecno>74</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>22</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal/>
+                  </item>
+                                   <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>RERATEMON</attrCode>
+                     <attrName/>
+                     <attrRecno>137</attrRecno>
+                     <caudRecno>107637</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>46</memSeqno>
+                     <recCtime>2018-06-29 01:03:47 PM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-29 01:03:47 PM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal>2019-01-01</dateVal>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PCPEFFDATE</attrCode>
+                     <attrName/>
+                     <attrRecno>141</attrRecno>
+                     <caudRecno>107670</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>48</memSeqno>
+                     <recCtime>2018-06-29 02:40:05 PM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-29 02:40:05 PM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <dateVal>2018-01-01</dateVal>
+                  </item>
+               </memDate>
+               <memDrug xsi:nil="true"/>
+               <memElig xsi:nil="true"/>
+               <memEnum xsi:nil="true"/>
+               <memExta xsi:nil="true"/>
+               <memExtb xsi:nil="true"/>
+               <memExtc xsi:nil="true"/>
+               <memExtd xsi:nil="true"/>
+               <memExte xsi:nil="true"/>
+               <memHead>
+                  <rowInd>I</rowInd>
+                  <entRecno>32522</entRecno>
+                  <memIdnum>R12345678FM1</memIdnum>
+                  <memRecno>34982</memRecno>
+                  <srcCode>HEALTHNET</srcCode>
+                  <caudRecno>107118</caudRecno>
+                  <entRecnos>
+                     <item>32522</item>
+                  </entRecnos>
+                  <linkType>X</linkType>
+                  <matchCode>Unknown</matchCode>
+                  <matchScore>0</matchScore>
+                  <maudRecno>107670</maudRecno>
+                  <memSeqno>49</memSeqno>
+                  <memStat>A</memStat>
+                  <memVerno>5</memVerno>
+                  <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                  <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                  <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                  <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                  <srcRecno>28</srcRecno>
+               </memHead>
+               <memIdent>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSSN</attrCode>
+                     <attrName/>
+                     <attrRecno>6</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>28</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>SSA</idIssuer>
+                     <idNumber>111111111</idNumber>
+                     <idSrcRecno>3</idSrcRecno>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATSUBID</attrCode>
+                     <attrName/>
+                     <attrRecno>107</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>29</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <idExpDate xsi:nil="true"/>
+                     <idIssuer>INSID</idIssuer>
+                     <idNumber>R12345678FM1</idNumber>
+                     <idSrcRecno>30</idSrcRecno>
+                  </item>
+               </memIdent>
+               <memIds>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATEMCONTACT</attrCode>
+                     <attrName/>
+                     <attrRecno>69</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>24</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>ctfirstname</item>
+                        <item>ctmiddlename</item>
+                        <item>ctlastname</item>
+                        <item>ctrelationship</item>
+                        <item>ctphnumber</item>
+                        <item>ctsequence</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMECONT</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLN</attrCode>
+                     <attrName/>
+                     <attrRecno>101</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>25</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>hlthplncode</item>
+                        <item>hlthplndesc</item>
+                        <item>hlthplntyp</item>
+                        <item>cvgtypcode</item>
+                        <item>cvgtypdesc</item>
+                        <item>benepkgcode</item>
+                        <item>benepkgdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHLTHPLN</segCode>
+                     <values>
+                        <item>HENH</item>
+                        <item>HEALTH NET COMMERCIAL</item>
+                        <item>CI</item>
+                        <item>DW7</item>
+                        <item>HEALTH NET'S BLUE &amp; GOLD HMO</item>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLNGRP</attrCode>
+                     <attrName/>
+                     <attrRecno>102</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>26</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>hlthplngrpplcyid</item>
+                        <item>hlthplngrpcode</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHTHPLNGRP</segCode>
+                     <values>
+                        <item>5047XS</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>HLTHPLNREL</attrCode>
+                     <attrName/>
+                     <attrRecno>103</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>27</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>hlthplngrpname</item>
+                        <item>relationcode</item>
+                        <item>relationdesc</item>
+                        <item>memseqcode</item>
+                        <item>memseqdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMHTHPLNREL</segCode>
+                     <values>
+                        <item>UCOP BLUE &amp; GOLD</item>
+                        <item>18</item>
+                        <item>SELF</item>
+                        <item>FM1</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MBRMONTH</attrCode>
+                     <attrName/>
+                     <attrRecno>73</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>30</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>mbrmthactive</item>
+                        <item>mbrmthefctvdt</item>
+                        <item>mbrmthtermdt</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMBRMTH</segCode>
+                     <values>
+                        <item>201805</item>
+                        <item>201608</item>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MEDICAIDSTAT</attrCode>
+                     <attrName/>
+                     <attrRecno>105</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>31</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>medistatcd</item>
+                        <item>medistatdesc</item>
+                        <item>mediprogcd</item>
+                        <item>mediprogdesc</item>
+                        <item>medidualstatcd</item>
+                        <item>medidualstatdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMEDICAID</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>MEDICARESTAT</attrCode>
+                     <attrName/>
+                     <attrRecno>104</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>32</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>medistatcd</item>
+                        <item>medistatdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMMEDICARE</segCode>
+                     <values>
+                        <item/>
+                        <item/>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PCPINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>72</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>36</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>pcpprovfirstname</item>
+                        <item>pcpprovlastname</item>
+                        <item>pcpprovfullname</item>
+                        <item>pcpprovnpi</item>
+                        <item>pcpclinicdesc</item>
+                        <item>pcpclinicorgid</item>
+                        <item>pcpclinicorgidtype</item>
+                        <item>pcpclinicorgdesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMPCP</segCode>
+                     <values>
+                        <item>MARGARET</item>
+                        <item>DURBIN</item>
+                        <item>MARGARET DURBIN MD</item>
+                        <item>1831203454</item>
+                        <item>JOHN MUIR PHYSICIAN NETWORK</item>
+                        <item>680360801</item>
+                        <item>1</item>
+                        <item>CONTRACTED PROVIDERS</item>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PHARMINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>136</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>37</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>rxbin</item>
+                        <item>rxpcn</item>
+                        <item>rxgroup</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMPHARM</segCode>
+                     <values>
+                        <item>123456789ABCDEF</item>
+                        <item>123456789ABCDEF</item>
+                        <item>123456789ABCDEF</item>
+                     </values>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>SUBINFO</attrCode>
+                     <attrName/>
+                     <attrRecno>138</attrRecno>
+                     <caudRecno>107670</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>49</memSeqno>
+                     <recCtime>2018-06-29 02:40:05 PM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-29 02:40:05 PM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <fldNames>
+                        <item>sublastname</item>
+                        <item>subfirstname</item>
+                        <item>submiddlein</item>
+                        <item>subnumber</item>
+                        <item>subfamilycoverage</item>
+                        <item>subfamilycoveragedesc</item>
+                     </fldNames>
+                     <fldTypes>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                        <item>String</item>
+                     </fldTypes>
+                     <segCode>MEMSUBSCRIBE</segCode>
+                     <values>
+                        <item>SIMPSON</item>
+                        <item>MARGE</item>
+                        <item>BEATRICE</item>
+                        <item>4</item>
+                        <item>Employee + Family</item>
+                        <item/>
+                     </values>
+                  </item>
+               </memIds>
+               <memIque xsi:nil="true"/>
+               <memLink xsi:nil="true"/>
+               <memName>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATNAME</attrCode>
+                     <attrName/>
+                     <attrRecno>1</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>33</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst>MARGE</onmFirst>
+                     <onmLast>SIMPSON</onmLast>
+                     <onmMiddle>BEATRICE</onmMiddle>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATALIAS</attrCode>
+                     <attrName/>
+                     <attrRecno>11</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>34</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst/>
+                     <onmLast/>
+                     <onmMiddle/>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATPRFNM</attrCode>
+                     <attrName/>
+                     <attrRecno>12</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>35</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <onmDegree/>
+                     <onmFirst/>
+                     <onmLast/>
+                     <onmMiddle/>
+                     <onmPrefix/>
+                     <onmSuffix/>
+                     <onmTitle/>
+                  </item>
+               </memName>
+               <memNote xsi:nil="true"/>
+               <memOque xsi:nil="true"/>
+               <memOref xsi:nil="true"/>
+               <memPhone>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATHOMEPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>4</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>38</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>4159662076</phNumber>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATOTHRPH</attrCode>
+                     <attrName/>
+                     <attrRecno>5</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>39</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>4159662076</phNumber>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PATCELLPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>30</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>40</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>4159662076</phNumber>
+                  </item>
+                  <item>
+                     <rowInd>I</rowInd>
+                     <entRecno>32522</entRecno>
+                     <memIdnum>R12345678FM1</memIdnum>
+                     <memRecno>34982</memRecno>
+                     <srcCode>HEALTHNET</srcCode>
+                     <asaIdxno>0</asaIdxno>
+                     <attrCode>PCPPHONE</attrCode>
+                     <attrName/>
+                     <attrRecno>140</attrRecno>
+                     <caudRecno>107118</caudRecno>
+                     <maudRecno>107670</maudRecno>
+                     <memSeqno>41</memSeqno>
+                     <recCtime>2018-06-25 10:08:26 AM</recCtime>
+                     <recMtime>2018-06-29 02:40:05 PM</recMtime>
+                     <recStat>A</recStat>
+                     <srcFtime>2018-06-25 10:08:26 AM</srcFtime>
+                     <srcLtime>2018-06-29 02:40:05 PM</srcLtime>
+                     <phArea/>
+                     <phCmnt/>
+                     <phExtn/>
+                     <phIcc/>
+                     <phNumber>4159662076</phNumber>
+                  </item>
+               </memPhone>
+               <memQryd xsi:nil="true"/>
+               <memRule xsi:nil="true"/>
+               <memXeia xsi:nil="true"/>
+               <memXtsk xsi:nil="true"/>
+            </item>
+         </getMemberReturn>
+      </getMemberResponse>
