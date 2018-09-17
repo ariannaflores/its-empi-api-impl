@@ -13,9 +13,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
-	<context:property-placeholder
-		location="file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/common_config.properties,file:///opt/properties/apps/ITS/ITS-EMPI-API-IMPL/config.properties" />
-
+	
 	<!-- Partitioned Object Store -->
 	<objectstore:config partition="expirable" name="errorObjectStore"
 		entryTtl="${mail.objectstore.entryttl}" expirationInterval="${mail.objectstore.expirationinterval}"
